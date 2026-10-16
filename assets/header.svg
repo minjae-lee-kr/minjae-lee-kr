@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Minjae Lee — ambitious products, dependable decisions</title>
+  <desc id="desc">Commerce experiences, GraphQL APIs and developer automation. A restrained warm green composition with three connected engineering domains.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#173a34"/><stop offset="1" stop-color="#102724"/></linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#c3d7ed" stroke-opacity=".05"/></pattern>
+  </defs>
+  <rect width="1200" height="300" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="300" rx="16" fill="url(#grid)"/>
+  <path d="M867 92H1044V206H867Z M919 92V206 M970 92V206" fill="none" stroke="#91b3bc" stroke-opacity=".3"/>
+  <path d="M867 92L919 149L970 110L1044 206" fill="none" stroke="#9fdcc8" stroke-width="2"/>
+  <g fill="#9fdcc8"><circle cx="867" cy="92" r="5"/><circle cx="919" cy="149" r="5"/><circle cx="970" cy="110" r="5"/><circle cx="1044" cy="206" r="5"/></g>
+  <g font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Arial,sans-serif">
+    <text x="58" y="65" fill="#a7d6c9" font-size="13" letter-spacing="3">SOFTWARE ENGINEER</text>
+    <text x="56" y="133" fill="#f4f6f9" font-size="52" font-weight="650" letter-spacing="-2">Minjae Lee</text>
+    <text x="58" y="181" fill="#d0dfd4" font-size="22">Ambitious products. Dependable decisions.</text>
+    <path d="M58 215H740" stroke="#344354"/>
+    <text x="58" y="254" fill="#b8c5d2" font-size="15">Commerce experiences</text>
+    <text x="280" y="254" fill="#b8c5d2" font-size="15">GraphQL APIs</text>
+    <text x="464" y="254" fill="#b8c5d2" font-size="15">Reliable automation</text>
+  </g>
+</svg>

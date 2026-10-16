@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Minjae Lee's independent engineering experiments: commerce recovery, evidence-bound changes and GraphQL cancellation."
+    />
+    <meta name="color-scheme" content="light" />
+    <title>Minjae Lee — Engineering Labs</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="portfolio.js" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#work" data-i18n="skip">Skip to selected work</a>
+    <header class="site-header wrap">
+      <a class="wordmark" href="#top" data-i18n-aria="home">M<span>·</span>L</a>
+      <nav data-i18n-aria="mainNav" aria-label="Main navigation">
+        <a href="#work" data-i18n="navWork">Selected work</a
+        ><a href="#approach" data-i18n="navApproach">Approach</a
+        ><a href="https://www.linkedin.com/in/minjae-lee-kr/" rel="noreferrer"
+          >LinkedIn <span aria-hidden="true">↗</span></a
+        >
+      </nav>
+      <div class="languages" role="group" data-i18n-aria="language" aria-label="Language">
+        <button type="button" data-language="ko" lang="ko" aria-pressed="false">한국어</button
+        ><button type="button" data-language="en" lang="en" aria-pressed="true">English</button>
+      </div>
+    </header>
+    <main id="top">
+      <section class="hero wrap" aria-labelledby="hero-title">
+        <div class="eyebrow">
+          <span class="signal" aria-hidden="true"></span> MINJAE LEE / ENGINEERING
+        </div>
+        <h1 id="hero-title">
+          <span data-i18n="heroFirst">Ambitious products.</span><br /><span
+            class="hero-accent"
+            data-i18n="heroSecond"
+            >Dependable decisions.</span
+          >
+        </h1>
+        <div class="hero-bottom">
+          <p data-i18n="heroLead">
+            Commerce experiences, GraphQL APIs and developer automation. Independent experiments
+            that make difficult failure modes inspectable.
+          </p>
+          <a class="explore" href="#work"
+            ><span data-i18n="explore">Explore the work</span><span aria-hidden="true">↓</span></a
+          >
+        </div>
+        <div class="hero-rule">
+          <span data-i18n="domainProduct">01 / Product</span
+          ><span data-i18n="domainContracts">02 / Contracts</span
+          ><span data-i18n="domainEvidence">03 / Evidence</span>
+        </div>
+      </section>
+      <section id="work" class="work-section wrap" aria-labelledby="work-title">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow" data-i18n="workEyebrow">SELECTED WORK</span>
+            <h2 id="work-title" data-i18n="workTitle">Start with the difficult case.</h2>
+          </div>
+          <p data-i18n="workLead">
+            Real local I/O. Reproducible counterexamples. The limits are part of the result.
+          </p>
+        </div>
+        <div class="projects" id="projects"></div>
+        <noscript
+          ><p>
+            Read the recorded runs / 실행 기록 보기:
+            <a href="evidence/intent/">Intent / Recovery</a> ·
+            <a href="evidence/change/">Verified Change</a> ·
+            <a href="evidence/cancellation/">Cancellation Debt</a>
+          </p></noscript
+        >
+        <p class="publication-note" data-i18n="publication">
+          Source repositories are pending publication. The linked reports are read-only recordings
+          of local runs.
+        </p>
+        <aside class="small-project" aria-labelledby="guards-title">
+          <div>
+            <span class="eyebrow" data-i18n="smallTool">A SMALL PUBLIC TOOL</span>
+            <h3 id="guards-title">Empty Check Guards</h3>
+            <p data-i18n="guardsDescription">
+              Distinguish “nothing found” from “nothing checked.” A compact companion to the larger
+              experiments.
+            </p>
+          </div>
+          <a href="https://github.com/minjae-lee-kr/empty-check-guards" rel="noreferrer"
+            ><span data-i18n="guardsLink">View the public code</span>
+            <span aria-hidden="true">↗</span></a
+          >
+        </aside>
+      </section>
+      <section id="approach" class="approach wrap" aria-labelledby="approach-title">
+        <div>
+          <span class="eyebrow" data-i18n="approachEyebrow">A WAY OF WORKING</span>
+          <h2 id="approach-title" data-i18n="approachTitle">Make the ambition tangible.</h2>
+          <p data-i18n="bio">
+            I'm a software engineer at NAVER. My work spans commerce experiences, GraphQL API
+            servers and developer productivity.
+          </p>
+        </div>
+        <ol class="principles">
+          <li>
+            <span aria-hidden="true">01</span>
+            <div>
+              <h3 data-i18n="principleOne">Follow the whole journey.</h3>
+              <p data-i18n="principleOneBody">
+                Connect what a person intends to do with the client state, API contract and durable
+                result.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">02</span>
+            <div>
+              <h3 data-i18n="principleTwo">Test the uncomfortable assumption.</h3>
+              <p data-i18n="principleTwoBody">
+                Reproduce the plausible approach that fails, then compare the protected path under
+                the same fault.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span aria-hidden="true">03</span>
+            <div>
+              <h3 data-i18n="principleThree">Keep the claim inspectable.</h3>
+              <p data-i18n="principleThreeBody">
+                Show the recorded evidence, the source revision and what the experiment cannot
+                prove.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </section>
+      <section class="note wrap">
+        <p data-i18n="disclosure">
+          Independent personal projects using synthetic data. No employer code, internal
+          architecture or production results are reproduced.
+        </p>
+        <a
+          href="https://www.linkedin.com/pulse/when-findings-isnt-enough-coverage-heartbeats-lee-minjae-vre0c/"
+          rel="noreferrer"
+          ><span data-i18n="article">Read the engineering note</span>
+          <span aria-hidden="true">↗</span></a
+        >
+      </section>
+    </main>
+    <footer class="wrap">
+      <span>Minjae Lee</span>
+      <p data-i18n="footer">Built to be explored, questioned and improved.</p>
+      <a href="https://github.com/minjae-lee-kr" rel="noreferrer"
+        >GitHub <span aria-hidden="true">↗</span></a
+      >
+    </footer>
+  </body>
+</html>
