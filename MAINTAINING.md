@@ -15,6 +15,8 @@ The hub and bundled displays share the `minjae.portfolio.language` localStorage 
 
 ## Refreshing evidence
 
+The bilingual reading pages under `docs/notes/` link to these frozen recordings. Their source revisions, figures and claims are historical, even when the experiment repositories advance. Refresh a note's evidence and explanation together; do not silently relabel a past recording as a new run. The notes share the language preference, preserve open source details and keep the reader within the same section when a translation changes the page height.
+
 `node scripts/bundle-evidence.mjs` is a maintainer-only import from the three known sibling project directories. It is not required for a checkout to render or pass its existing bundle checks. The source revisions, report directories and optional exact recording digests are pinned in that script. A single bundle can be refreshed with `intent`, `change` or `cancellation` as its sole argument.
 
 Before changing a pin, confirm the source checkout and its recorded run belong together. The import rejects dirty or changed source metadata, incomplete expected case/check inventories and failed observations. Verified Change assets must match the recorded source fingerprint. Cancellation Debt's export manifest must match every original export file. These checks inspect a known report contract; they do not rerun or independently prove the underlying experiment.

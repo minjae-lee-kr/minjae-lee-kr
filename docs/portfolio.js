@@ -43,6 +43,7 @@ const copy = {
     article: 'Read the engineering note',
     footer: 'Built to be explored, questioned and improved.',
     report: 'Read the recorded run',
+    caseNote: 'Read the engineering note',
     recorded: 'Recorded local run',
     pendingReport: 'Recorded report being prepared',
     revision: 'Source revision',
@@ -126,6 +127,7 @@ const copy = {
     article: '엔지니어링 글 읽기',
     footer: '살펴보고, 질문하고, 더 나아질 수 있도록.',
     report: '실행 기록 읽어보기',
+    caseNote: '설계 판단 읽어보기',
     recorded: '기록된 로컬 실행',
     pendingReport: '실행 기록 보고서 준비 중',
     revision: '소스 버전',
@@ -168,12 +170,16 @@ const copy = {
 };
 const projects = [
   { id: 'intent', title: 'Intent / Recovery', revision: '46c889e', url: 'evidence/intent/' },
-  { id: 'change', title: 'Verified Change', revision: '5eb3fe8', url: 'evidence/change/' },
+  {
+    id: 'change', title: 'Verified Change', revision: '5eb3fe8',
+    url: 'evidence/change/', note: 'notes/verified-change/',
+  },
   {
     id: 'cancellation',
     title: 'Cancellation Debt',
     revision: 'ff47d27',
     url: 'evidence/cancellation/',
+    note: 'notes/cancellation-debt/',
   },
 ];
 const key = 'minjae.portfolio.language';
@@ -218,13 +224,19 @@ function renderProjects(t) {
       const tags = element('div', 'tags');
       for (const tag of text.tags) tags.append(element('span', 'tag', tag));
       const links = element('div', 'project-links');
+      if (project.note) {
+        const noteLink = element('a', '', t.caseNote + ' →');
+        noteLink.href = project.note;
+        noteLink.setAttribute('aria-label', project.title + ' — ' + t.caseNote);
+        links.append(noteLink);
+      }
       if (project.url) {
         const link = element('a', '', t.report + ' ↗');
         link.href = project.url;
         link.setAttribute('aria-label', project.title + ' — ' + t.report);
         links.append(link);
       } else links.append(element('span', 'pending', t.pendingReport));
-      links.append(element('span', 'source-revision', t.revision + ' ' + project.revision));
+      const revision = element('p', 'source-revision', t.revision + ' ' + project.revision);
       body.append(
         meta,
         heading,
@@ -232,6 +244,7 @@ function renderProjects(t) {
         element('p', 'description', text.description),
         tags,
         links,
+        revision,
       );
       card.append(visual, body);
       return card;

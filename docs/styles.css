@@ -347,6 +347,9 @@ h2 {
   font-weight: 500;
   color: var(--muted);
 }
+.source-revision {
+  margin: 10px 0 0;
+}
 .secondary {
   grid-column: 1/-1;
   display: grid;

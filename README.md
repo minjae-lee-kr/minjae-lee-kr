@@ -14,11 +14,13 @@ These are independent implementations with synthetic data. The questions are pra
 | --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Intent / Recovery** | After a response disappears, how do we recover the same durable intent?        | Real HTTP response loss, SQLite and process crashes. [Recorded local run](docs/evidence/intent/).                                                       |
 | **Verified Change**   | Did we select the code—and the verification policy—that was actually reviewed? | Immutable Git candidates, real checker processes and conditional ref updates. [Recorded local run](docs/evidence/change/).                              |
-| **Cancellation Debt** | When the gateway stops waiting, what work still occupies capacity?             | Four policies compare request cancellation, permits and physical completion. [Recorded local run](docs/evidence/cancellation/). An experimental branch. |
+| **Cancellation Debt** | When the gateway stops waiting, what work still occupies capacity?             | Four policies compare request cancellation, permits and physical completion. [Recorded local run](docs/evidence/cancellation/). |
 
 The source repositories are pending publication. These report bundles are read-only records of local execution, not live services or production claims. The [local portfolio hub](docs/index.html) provides Korean and English views.
 
 A smaller public tool: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards) distinguishes “nothing found” from “nothing checked.”
+
+Two reading guides connect the design decisions to their raw evidence: [Verify what “passed” means](docs/notes/verified-change/) and [The permit returned. The work remained](docs/notes/cancellation-debt/). Both include Korean and English views and annotated figures.
 
 ### How I work
 
