@@ -93,7 +93,12 @@ test('recorded bundles preserve raw evidence and expose only local relative disp
       }
     }
     assert.equal(
-      (await fetch(preview.url + '/api/intents', { method: 'POST', body: '{}' })).status,
+      (
+        await fetch(preview.url + '/api/intents', {
+          method: 'POST',
+          body: '{}',
+        })
+      ).status,
       405,
     );
   } finally {
@@ -133,5 +138,54 @@ test('cancellation import refuses empty, truncated, duplicated and failed policy
     const changed = structuredClone(original);
     mutate(changed);
     assert.throws(() => validateRecording('cancellation', changed, revision));
+  }
+});
+
+test('history bundle keeps recorded data exact and distinguishes navigation adaptations', async () => {
+  const root = path.join(docs, 'evidence/history');
+  const manifest = JSON.parse(await readFile(path.join(root, 'bundle.json'), 'utf8'));
+  const upstreamBytes = await readFile(path.join(root, manifest.upstreamManifest));
+  assert.equal(hash(upstreamBytes), manifest.upstreamManifestSha256);
+  const upstream = JSON.parse(upstreamBytes);
+  assert.equal(upstream.length, 12);
+  const files = new Map();
+  for (const entry of manifest.files) {
+    const bytes = await readFile(path.join(root, entry.path));
+    assert.equal(hash(bytes), entry.sha256, entry.path);
+    files.set(entry.path, bytes);
+  }
+  for (const entry of upstream) {
+    const adapted = ['index.html', 'report.css'].includes(entry.name);
+    assert.equal(hash(files.get(entry.name)) === entry.sha256, !adapted, entry.name);
+  }
+  assert.equal(hash(files.get('evidence.json')), manifest.evidenceSha256);
+  const report = JSON.parse(files.get('evidence.json'));
+  const recording = JSON.parse(files.get('recording.json'));
+  assert.equal(report.sourceBefore.git.head, manifest.sourceRevision);
+  assert.equal(recording.sourceRevision, manifest.sourceRevision);
+  const dataScript = files.get('report-data.js').toString('utf8');
+  const prefix = 'window.HISTORY_RECORDING = ';
+  assert.ok(dataScript.startsWith(prefix) && dataScript.endsWith(';\n'));
+  const displayed = JSON.parse(dataScript.slice(prefix.length, -2));
+  assert.deepEqual(displayed.report, report, 'Displayed observations must match downloadable JSON');
+  assert.deepEqual(displayed.recording, recording);
+  for (const run of report.runs) {
+    assert.deepEqual(JSON.parse(files.get(`seed-${run.seed}.json`)), run.history);
+    assert.deepEqual(
+      JSON.parse(files.get(`seed-${run.seed}-stale-control.json`)),
+      run.staleReadControl.history,
+    );
+  }
+  const preview = await startPreview({ port: 0 });
+  try {
+    for (const name of files.keys()) {
+      const response = await fetch(`${preview.url}/evidence/history/${name}`);
+      assert.equal(response.status, 200, name);
+      assert.equal(hash(Buffer.from(await response.arrayBuffer())), hash(files.get(name)), name);
+    }
+    const html = await (await fetch(`${preview.url}/evidence/history/`)).text();
+    assert.match(html, /href="\.\.\/\.\.\/#intent"/);
+  } finally {
+    await preview.stop();
   }
 });

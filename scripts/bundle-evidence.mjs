@@ -12,8 +12,9 @@ const sources = [
   {
     id: 'intent',
     repository: 'intent-recovery-lab',
-    revision: '46c889ef1948f19fd88ebcc4ca9321bea22e3e17',
-    report: 'reports/2026-10-16T16-44-23-521Z-643dcb89',
+    revision: 'e081192189297311b1ebc9e8b40d2ef1993b578a',
+    report: 'reports/2026-10-16T17-57-36-452Z-c4acd058',
+    evidenceSha256: 'a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14',
     evidence: 'evidence.json',
     files: ['index.html', 'report.css', 'report.js', 'evidence.json'],
   },

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "runId": "2026-10-16T16-44-23-521Z-643dcb89",
-  "startedAt": "2026-10-16T16:44:23.521Z",
-  "completedAt": "2026-10-16T16:44:27.302Z",
+  "runId": "2026-10-16T17-57-36-452Z-c4acd058",
+  "startedAt": "2026-10-16T17:57:36.452Z",
+  "completedAt": "2026-10-16T17:57:40.242Z",
   "runtime": {
     "node": "24.19.0",
     "platform": "win32",
@@ -10,7 +10,7 @@
     "sqlite": "3.53.3"
   },
   "sourceBefore": {
-    "sha256": "f1282e390925e7019ccf3384dfc4848aef3e5f006581174bc7576230b75843ec",
+    "sha256": "ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b",
     "files": [
       {
         "path": ".gitattributes",
@@ -38,11 +38,11 @@
       },
       {
         "path": "README.ko.md",
-        "sha256": "0e992b82ffeb6446150e36e834106ca4d830f7a81e5a396241e535e7fff18844"
+        "sha256": "e0d4cefbfa42363aae0cfd5299c074862d60eec66cee402e9f3a702b10c5e90e"
       },
       {
         "path": "README.md",
-        "sha256": "c5f942ca22e783882869ec7c628e5906afcab5599286db9369ebe85b3a938bc5"
+        "sha256": "c813bff00841aa6f798e1b29361010555e86d3ca05091cc5fee5dcd69aa38220"
       },
       {
         "path": "SECURITY.md",
@@ -57,20 +57,32 @@
         "sha256": "5948cb67c4859f2527ff077ca5333cef57c72b11df27a265340517e81a694420"
       },
       {
+        "path": "docs/history-check.ko.md",
+        "sha256": "56ee37bd1ea1134461d969ada7a675948a3b7a348cdd6213cd03c0acf2c80294"
+      },
+      {
+        "path": "docs/history-check.md",
+        "sha256": "ed68db80db7fcce3e0291fcc6f730be66469c39cc68699869116d9e80b58a67c"
+      },
+      {
         "path": "index.html",
         "sha256": "ddfaef176cf605a09770842c0877df1d92c4d481f18447aec7fdd4e2d6097d6a"
       },
       {
         "path": "package.json",
-        "sha256": "5b7e8a18b99f9aec10ea6f1872d94c2477cc96ed08e91ca7a9845279e11c6d1e"
+        "sha256": "8f362d3e579e9664b17a5fdc84c058913e359a4bab08a418395a459c2bba7b09"
       },
       {
         "path": "pnpm-lock.yaml",
-        "sha256": "b3607d6775affa5188f196d52b6215776e5d4f1d46e06c5f2ca05ce0acfac582"
+        "sha256": "1f17e313136db1cd3c32f5294b8eb1ba7b673e3bb973210a70ccdfbcc51d9821"
       },
       {
         "path": "public/favicon.svg",
         "sha256": "6e37b1113a4d64c2825f9207ac77cce090ce936d81d0ee8fe4bac185cbd73a7a"
+      },
+      {
+        "path": "scripts/check-history.ts",
+        "sha256": "8bed8694fb8e812f32ad09cbdf63e9948bcce38079a60633d0575798caa3bd62"
       },
       {
         "path": "scripts/check-ledger.ts",
@@ -85,6 +97,62 @@
         "sha256": "6d87c550527babb183743484ff69a1399faf8343509c4e7721414dedaaaac211"
       },
       {
+        "path": "scripts/history/assessment.ts",
+        "sha256": "07dde87516b6bf584ef21e8505068d853bef1ca1e008dff568ff289aec3e462a"
+      },
+      {
+        "path": "scripts/history/checker.ts",
+        "sha256": "722248fecb9f11116fc81b7e4758d25b30e5360272e5c4429dabaa31da66e26c"
+      },
+      {
+        "path": "scripts/history/harness.ts",
+        "sha256": "3a1e8fc152382638f7fa240bd772c17aaf73bc7683fec3b618e5faec94d1f65b"
+      },
+      {
+        "path": "scripts/history/prepare.ts",
+        "sha256": "cb7fdf3cf6a7efc9ec0e3d1181cee801c40f3a63a49bdd031ce6cb7d63d5244d"
+      },
+      {
+        "path": "scripts/history/presentation.ts",
+        "sha256": "effbba547ea14434e94cf1e6706ac38e2de837df6d965cb8b602ee69eea1adff"
+      },
+      {
+        "path": "scripts/history/process.ts",
+        "sha256": "b646260ff3edeba8cde657c17ba69eb00824e6fd474c660eafd09561a62f5cae"
+      },
+      {
+        "path": "scripts/history/replay.ts",
+        "sha256": "0b0714b0543df3f93ea639ad01afa7b82db41205ff391c169bd2409e56f52656"
+      },
+      {
+        "path": "scripts/history/report-assets/index.html",
+        "sha256": "33597f63623a803f6c6364566ed3c4359ae8ff1a8d4f3532e67490653b89d0ac"
+      },
+      {
+        "path": "scripts/history/report-assets/report.css",
+        "sha256": "a3212c7b81d939b44f1df9d9d0e93ca3a6f44152fe040bc7f8a0bded19a100db"
+      },
+      {
+        "path": "scripts/history/report-assets/report.js",
+        "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      },
+      {
+        "path": "scripts/history/report-text.ts",
+        "sha256": "c9c14d4cd0830bcbd30a8631b17baac08563f58f2430e5fe761c7cbf992045ad"
+      },
+      {
+        "path": "scripts/history/spec.ts",
+        "sha256": "c595eec49b6a356319977fd1bc0137bff0131a4d986a9e615e6d9915f477dd04"
+      },
+      {
+        "path": "scripts/history/types.ts",
+        "sha256": "971b584683df33e608d943a8f7d501ed422bb34a40fbe38a8c69e1dcf5d793c7"
+      },
+      {
+        "path": "scripts/history/worker.ts",
+        "sha256": "b0eeeb340091aa9676847bd93c27c27dd5844fdeb58f11fc8f77c06f19b623dd"
+      },
+      {
         "path": "scripts/provenance.ts",
         "sha256": "3e2589e5a2c41177383bb8d683e3cec627e8b2eb2dda42983cb0852a0a695d3d"
       },
@@ -97,20 +165,32 @@
         "sha256": "7c45f4e9d090f45939c34487fc02521ffcbf0053fbe5bdd89576e496b5282650"
       },
       {
+        "path": "scripts/run-history.ts",
+        "sha256": "a5d6b1078459f011223ac3d61a5c2bc1056f4ab9379bfa684855b4f6c3ed7f83"
+      },
+      {
+        "path": "scripts/serve-history-report.ts",
+        "sha256": "184a4258f2a970d97784b2b781b4beb8769596904c0a67eb16b0e9f59d6ba7fa"
+      },
+      {
         "path": "scripts/serve-report.ts",
         "sha256": "5bf771611b6f994c389ee6b15be3abcc1b555b0ef76c55a633980a14d0e2b13c"
       },
       {
         "path": "src/client/App.tsx",
-        "sha256": "ad5751a6325c9c4f46f20177a19a6b735434bc96f8df487963c2813686a567ab"
+        "sha256": "de4c1c769491135be06dfb4e86d03456b6fc10c940c188a8ebb55aeed519e98c"
       },
       {
         "path": "src/client/env.d.ts",
         "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
       },
       {
+        "path": "src/client/feedback.ts",
+        "sha256": "66eb8e4f5a8c345984f9c83f2b58c8752c468bc7d5a5f7b0b03c5fc7bdbfca95"
+      },
+      {
         "path": "src/client/i18n.ts",
-        "sha256": "83805f6b661054c02e689de688b60d92cbc17e64949a191f625110df96641407"
+        "sha256": "4c5c45bff30fb03a08409ded187c24ece6d58b92a10249a2d72d18ccc6dc4930"
       },
       {
         "path": "src/client/main.tsx",
@@ -153,6 +233,10 @@
         "sha256": "3041ae178a3cf175167c59550e994a07d9170b99274042cb17e81f20287e8980"
       },
       {
+        "path": "tests/client-feedback.test.ts",
+        "sha256": "b4256384e05751d91cc0bc21bde0928cbf56ce39a67021b42b1434d0840f18ef"
+      },
+      {
         "path": "tests/client-http.test.ts",
         "sha256": "919affe4a40e0e31e375d334fb95dd3d1f5a3c19609db048e689fd9a874da8a9"
       },
@@ -175,6 +259,26 @@
       {
         "path": "tests/helpers/fixture-process.ts",
         "sha256": "5d90d74d7762751a629eb80ac655245b3e703ec7d75d55d6e266e8c929366572"
+      },
+      {
+        "path": "tests/helpers/history-fixtures.ts",
+        "sha256": "260d79c5eeea51713787087b76fafce3e7a4d40bb39de5db1f7d6e5678b66abd"
+      },
+      {
+        "path": "tests/history-check.test.ts",
+        "sha256": "69018679e08e737b434d6f8c09e38d87701ca13ac5d73ddb9549d5206a89cf52"
+      },
+      {
+        "path": "tests/history-io.test.ts",
+        "sha256": "d3c367aceca112d0beb70c9b7269ffc15aa7156a6cfcbde975cd8d39bf684bbc"
+      },
+      {
+        "path": "tests/history-presentation.test.ts",
+        "sha256": "b7ab162639f375913f933b323f8efedb8588fe2992404b430172d55f3f4a015c"
+      },
+      {
+        "path": "tests/history-report.test.ts",
+        "sha256": "2a493146a1e8c4e9d2dc0c8b12b214a2e2ab95af5f4b995a72173ae03a2a8293"
       },
       {
         "path": "tests/provenance.test.ts",
@@ -207,12 +311,12 @@
     ],
     "git": {
       "state": "available",
-      "head": "46c889ef1948f19fd88ebcc4ca9321bea22e3e17",
+      "head": "e081192189297311b1ebc9e8b40d2ef1993b578a",
       "dirty": false
     }
   },
   "sourceAfter": {
-    "sha256": "f1282e390925e7019ccf3384dfc4848aef3e5f006581174bc7576230b75843ec",
+    "sha256": "ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b",
     "files": [
       {
         "path": ".gitattributes",
@@ -240,11 +344,11 @@
       },
       {
         "path": "README.ko.md",
-        "sha256": "0e992b82ffeb6446150e36e834106ca4d830f7a81e5a396241e535e7fff18844"
+        "sha256": "e0d4cefbfa42363aae0cfd5299c074862d60eec66cee402e9f3a702b10c5e90e"
       },
       {
         "path": "README.md",
-        "sha256": "c5f942ca22e783882869ec7c628e5906afcab5599286db9369ebe85b3a938bc5"
+        "sha256": "c813bff00841aa6f798e1b29361010555e86d3ca05091cc5fee5dcd69aa38220"
       },
       {
         "path": "SECURITY.md",
@@ -259,20 +363,32 @@
         "sha256": "5948cb67c4859f2527ff077ca5333cef57c72b11df27a265340517e81a694420"
       },
       {
+        "path": "docs/history-check.ko.md",
+        "sha256": "56ee37bd1ea1134461d969ada7a675948a3b7a348cdd6213cd03c0acf2c80294"
+      },
+      {
+        "path": "docs/history-check.md",
+        "sha256": "ed68db80db7fcce3e0291fcc6f730be66469c39cc68699869116d9e80b58a67c"
+      },
+      {
         "path": "index.html",
         "sha256": "ddfaef176cf605a09770842c0877df1d92c4d481f18447aec7fdd4e2d6097d6a"
       },
       {
         "path": "package.json",
-        "sha256": "5b7e8a18b99f9aec10ea6f1872d94c2477cc96ed08e91ca7a9845279e11c6d1e"
+        "sha256": "8f362d3e579e9664b17a5fdc84c058913e359a4bab08a418395a459c2bba7b09"
       },
       {
         "path": "pnpm-lock.yaml",
-        "sha256": "b3607d6775affa5188f196d52b6215776e5d4f1d46e06c5f2ca05ce0acfac582"
+        "sha256": "1f17e313136db1cd3c32f5294b8eb1ba7b673e3bb973210a70ccdfbcc51d9821"
       },
       {
         "path": "public/favicon.svg",
         "sha256": "6e37b1113a4d64c2825f9207ac77cce090ce936d81d0ee8fe4bac185cbd73a7a"
+      },
+      {
+        "path": "scripts/check-history.ts",
+        "sha256": "8bed8694fb8e812f32ad09cbdf63e9948bcce38079a60633d0575798caa3bd62"
       },
       {
         "path": "scripts/check-ledger.ts",
@@ -287,6 +403,62 @@
         "sha256": "6d87c550527babb183743484ff69a1399faf8343509c4e7721414dedaaaac211"
       },
       {
+        "path": "scripts/history/assessment.ts",
+        "sha256": "07dde87516b6bf584ef21e8505068d853bef1ca1e008dff568ff289aec3e462a"
+      },
+      {
+        "path": "scripts/history/checker.ts",
+        "sha256": "722248fecb9f11116fc81b7e4758d25b30e5360272e5c4429dabaa31da66e26c"
+      },
+      {
+        "path": "scripts/history/harness.ts",
+        "sha256": "3a1e8fc152382638f7fa240bd772c17aaf73bc7683fec3b618e5faec94d1f65b"
+      },
+      {
+        "path": "scripts/history/prepare.ts",
+        "sha256": "cb7fdf3cf6a7efc9ec0e3d1181cee801c40f3a63a49bdd031ce6cb7d63d5244d"
+      },
+      {
+        "path": "scripts/history/presentation.ts",
+        "sha256": "effbba547ea14434e94cf1e6706ac38e2de837df6d965cb8b602ee69eea1adff"
+      },
+      {
+        "path": "scripts/history/process.ts",
+        "sha256": "b646260ff3edeba8cde657c17ba69eb00824e6fd474c660eafd09561a62f5cae"
+      },
+      {
+        "path": "scripts/history/replay.ts",
+        "sha256": "0b0714b0543df3f93ea639ad01afa7b82db41205ff391c169bd2409e56f52656"
+      },
+      {
+        "path": "scripts/history/report-assets/index.html",
+        "sha256": "33597f63623a803f6c6364566ed3c4359ae8ff1a8d4f3532e67490653b89d0ac"
+      },
+      {
+        "path": "scripts/history/report-assets/report.css",
+        "sha256": "a3212c7b81d939b44f1df9d9d0e93ca3a6f44152fe040bc7f8a0bded19a100db"
+      },
+      {
+        "path": "scripts/history/report-assets/report.js",
+        "sha256": "fed3417991f07a5250a2a31c868dd700d30e9434aa1c196f6f1b3649af21522b"
+      },
+      {
+        "path": "scripts/history/report-text.ts",
+        "sha256": "c9c14d4cd0830bcbd30a8631b17baac08563f58f2430e5fe761c7cbf992045ad"
+      },
+      {
+        "path": "scripts/history/spec.ts",
+        "sha256": "c595eec49b6a356319977fd1bc0137bff0131a4d986a9e615e6d9915f477dd04"
+      },
+      {
+        "path": "scripts/history/types.ts",
+        "sha256": "971b584683df33e608d943a8f7d501ed422bb34a40fbe38a8c69e1dcf5d793c7"
+      },
+      {
+        "path": "scripts/history/worker.ts",
+        "sha256": "b0eeeb340091aa9676847bd93c27c27dd5844fdeb58f11fc8f77c06f19b623dd"
+      },
+      {
         "path": "scripts/provenance.ts",
         "sha256": "3e2589e5a2c41177383bb8d683e3cec627e8b2eb2dda42983cb0852a0a695d3d"
       },
@@ -299,20 +471,32 @@
         "sha256": "7c45f4e9d090f45939c34487fc02521ffcbf0053fbe5bdd89576e496b5282650"
       },
       {
+        "path": "scripts/run-history.ts",
+        "sha256": "a5d6b1078459f011223ac3d61a5c2bc1056f4ab9379bfa684855b4f6c3ed7f83"
+      },
+      {
+        "path": "scripts/serve-history-report.ts",
+        "sha256": "184a4258f2a970d97784b2b781b4beb8769596904c0a67eb16b0e9f59d6ba7fa"
+      },
+      {
         "path": "scripts/serve-report.ts",
         "sha256": "5bf771611b6f994c389ee6b15be3abcc1b555b0ef76c55a633980a14d0e2b13c"
       },
       {
         "path": "src/client/App.tsx",
-        "sha256": "ad5751a6325c9c4f46f20177a19a6b735434bc96f8df487963c2813686a567ab"
+        "sha256": "de4c1c769491135be06dfb4e86d03456b6fc10c940c188a8ebb55aeed519e98c"
       },
       {
         "path": "src/client/env.d.ts",
         "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
       },
       {
+        "path": "src/client/feedback.ts",
+        "sha256": "66eb8e4f5a8c345984f9c83f2b58c8752c468bc7d5a5f7b0b03c5fc7bdbfca95"
+      },
+      {
         "path": "src/client/i18n.ts",
-        "sha256": "83805f6b661054c02e689de688b60d92cbc17e64949a191f625110df96641407"
+        "sha256": "4c5c45bff30fb03a08409ded187c24ece6d58b92a10249a2d72d18ccc6dc4930"
       },
       {
         "path": "src/client/main.tsx",
@@ -355,6 +539,10 @@
         "sha256": "3041ae178a3cf175167c59550e994a07d9170b99274042cb17e81f20287e8980"
       },
       {
+        "path": "tests/client-feedback.test.ts",
+        "sha256": "b4256384e05751d91cc0bc21bde0928cbf56ce39a67021b42b1434d0840f18ef"
+      },
+      {
         "path": "tests/client-http.test.ts",
         "sha256": "919affe4a40e0e31e375d334fb95dd3d1f5a3c19609db048e689fd9a874da8a9"
       },
@@ -377,6 +565,26 @@
       {
         "path": "tests/helpers/fixture-process.ts",
         "sha256": "5d90d74d7762751a629eb80ac655245b3e703ec7d75d55d6e266e8c929366572"
+      },
+      {
+        "path": "tests/helpers/history-fixtures.ts",
+        "sha256": "260d79c5eeea51713787087b76fafce3e7a4d40bb39de5db1f7d6e5678b66abd"
+      },
+      {
+        "path": "tests/history-check.test.ts",
+        "sha256": "69018679e08e737b434d6f8c09e38d87701ca13ac5d73ddb9549d5206a89cf52"
+      },
+      {
+        "path": "tests/history-io.test.ts",
+        "sha256": "d3c367aceca112d0beb70c9b7269ffc15aa7156a6cfcbde975cd8d39bf684bbc"
+      },
+      {
+        "path": "tests/history-presentation.test.ts",
+        "sha256": "b7ab162639f375913f933b323f8efedb8588fe2992404b430172d55f3f4a015c"
+      },
+      {
+        "path": "tests/history-report.test.ts",
+        "sha256": "2a493146a1e8c4e9d2dc0c8b12b214a2e2ab95af5f4b995a72173ae03a2a8293"
       },
       {
         "path": "tests/provenance.test.ts",
@@ -409,7 +617,7 @@
     ],
     "git": {
       "state": "available",
-      "head": "46c889ef1948f19fd88ebcc4ca9321bea22e3e17",
+      "head": "e081192189297311b1ebc9e8b40d2ef1993b578a",
       "dirty": false
     }
   },
@@ -423,7 +631,7 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:23.806Z",
+          "at": "2026-10-16T17:57:36.739Z",
           "elapsedMs": 32,
           "kind": "transport-error",
           "request": {
@@ -443,8 +651,8 @@
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:23.814Z",
-          "elapsedMs": 39,
+          "at": "2026-10-16T17:57:36.747Z",
+          "elapsedMs": 40,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -456,7 +664,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_ed55a853-ffde-49e1-99f1-3e263a3552fa",
+                "receiptId": "receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04",
                 "intentId": "purchase-original",
                 "offerId": "workshop",
                 "quantity": 1
@@ -471,7 +679,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ed55a853-ffde-49e1-99f1-3e263a3552fa",
+                "receiptId": "receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -480,8 +688,8 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:23.821Z",
-          "elapsedMs": 46,
+          "at": "2026-10-16T17:57:36.755Z",
+          "elapsedMs": 47,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -502,15 +710,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_d819d320-41b5-4898-9a73-7da9c92f4e67",
+            "receiptId": "receipt_e3dfec56-3110-4a59-8341-13a84fb93b93",
             "reason": null,
             "journalSequence": 2
           }
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:23.823Z",
-          "elapsedMs": 48,
+          "at": "2026-10-16T17:57:36.757Z",
+          "elapsedMs": 50,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -522,14 +730,14 @@
             "remainingCapacity": 10,
             "effects": [
               {
-                "receiptId": "receipt_d819d320-41b5-4898-9a73-7da9c92f4e67",
-                "intentId": "purchase-fresh-key",
+                "receiptId": "receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04",
+                "intentId": "purchase-original",
                 "offerId": "workshop",
                 "quantity": 1
               },
               {
-                "receiptId": "receipt_ed55a853-ffde-49e1-99f1-3e263a3552fa",
-                "intentId": "purchase-original",
+                "receiptId": "receipt_e3dfec56-3110-4a59-8341-13a84fb93b93",
+                "intentId": "purchase-fresh-key",
                 "offerId": "workshop",
                 "quantity": 1
               }
@@ -543,7 +751,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ed55a853-ffde-49e1-99f1-3e263a3552fa",
+                "receiptId": "receipt_91c2d563-6d25-4e30-82cd-5a76b13fcc04",
                 "reason": null,
                 "journalSequence": 1
               },
@@ -555,7 +763,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_d819d320-41b5-4898-9a73-7da9c92f4e67",
+                "receiptId": "receipt_e3dfec56-3110-4a59-8341-13a84fb93b93",
                 "reason": null,
                 "journalSequence": 2
               }
@@ -681,7 +889,7 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:23.969Z",
+          "at": "2026-10-16T17:57:36.895Z",
           "elapsedMs": 10,
           "kind": "transport-error",
           "request": {
@@ -701,8 +909,8 @@
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:23.972Z",
-          "elapsedMs": 13,
+          "at": "2026-10-16T17:57:36.900Z",
+          "elapsedMs": 14,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -714,7 +922,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+                "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
                 "intentId": "purchase-original",
                 "offerId": "workshop",
                 "quantity": 1
@@ -729,7 +937,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+                "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -738,8 +946,8 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:23.975Z",
-          "elapsedMs": 15,
+          "at": "2026-10-16T17:57:36.902Z",
+          "elapsedMs": 17,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -760,15 +968,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+            "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:23.977Z",
-          "elapsedMs": 17,
+          "at": "2026-10-16T17:57:36.904Z",
+          "elapsedMs": 19,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -780,7 +988,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+                "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
                 "intentId": "purchase-original",
                 "offerId": "workshop",
                 "quantity": 1
@@ -795,7 +1003,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+                "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -917,7 +1125,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+            "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
             "reason": null,
             "journalSequence": 1
           },
@@ -929,7 +1137,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_63dd416d-22dd-4023-88d3-7f4567492d2d",
+            "receiptId": "receipt_8d334387-32fc-4f29-b19e-90bf3326db55",
             "reason": null,
             "journalSequence": 1
           }
@@ -943,8 +1151,8 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:24.559Z",
-          "elapsedMs": 455,
+          "at": "2026-10-16T17:57:37.499Z",
+          "elapsedMs": 466,
           "kind": "transport-error",
           "request": {
             "method": "POST",
@@ -962,8 +1170,8 @@
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:24.563Z",
-          "elapsedMs": 459,
+          "at": "2026-10-16T17:57:37.502Z",
+          "elapsedMs": 470,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -977,8 +1185,8 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:24.564Z",
-          "elapsedMs": 460,
+          "at": "2026-10-16T17:57:37.504Z",
+          "elapsedMs": 471,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -994,8 +1202,8 @@
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:26.181Z",
-          "elapsedMs": 2077,
+          "at": "2026-10-16T17:57:39.119Z",
+          "elapsedMs": 2086,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1010,15 +1218,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+            "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 5,
-          "at": "2026-10-16T16:44:26.182Z",
-          "elapsedMs": 2078,
+          "at": "2026-10-16T17:57:39.121Z",
+          "elapsedMs": 2088,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1030,7 +1238,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+                "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
                 "intentId": "purchase-late-commit",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1045,7 +1253,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+                "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1054,8 +1262,8 @@
         },
         {
           "sequence": 6,
-          "at": "2026-10-16T16:44:26.184Z",
-          "elapsedMs": 2080,
+          "at": "2026-10-16T17:57:39.122Z",
+          "elapsedMs": 2090,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -1076,15 +1284,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+            "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 7,
-          "at": "2026-10-16T16:44:26.185Z",
-          "elapsedMs": 2081,
+          "at": "2026-10-16T17:57:39.124Z",
+          "elapsedMs": 2091,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1096,7 +1304,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+                "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
                 "intentId": "purchase-late-commit",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1111,7 +1319,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+                "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1257,7 +1465,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+            "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
             "reason": null,
             "journalSequence": 1
           },
@@ -1269,7 +1477,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_510ac3a9-bfae-4025-a4df-3955190942f4",
+            "receiptId": "receipt_c6b1bf13-f522-4469-8f35-70417ffd83ca",
             "reason": null,
             "journalSequence": 1
           }
@@ -1307,7 +1515,7 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:26.321Z",
+          "at": "2026-10-16T17:57:39.259Z",
           "elapsedMs": 11,
           "kind": "http",
           "request": {
@@ -1329,15 +1537,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+            "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:26.323Z",
-          "elapsedMs": 12,
+          "at": "2026-10-16T17:57:39.261Z",
+          "elapsedMs": 13,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1349,7 +1557,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "intentId": "purchase-conflict",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1364,7 +1572,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1373,7 +1581,7 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:26.324Z",
+          "at": "2026-10-16T17:57:39.263Z",
           "elapsedMs": 14,
           "kind": "http",
           "request": {
@@ -1397,8 +1605,8 @@
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:26.325Z",
-          "elapsedMs": 15,
+          "at": "2026-10-16T17:57:39.264Z",
+          "elapsedMs": 16,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1413,15 +1621,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+            "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 5,
-          "at": "2026-10-16T16:44:26.326Z",
-          "elapsedMs": 16,
+          "at": "2026-10-16T17:57:39.265Z",
+          "elapsedMs": 17,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1433,7 +1641,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "intentId": "purchase-conflict",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1448,7 +1656,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1540,7 +1748,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+            "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
             "reason": null,
             "journalSequence": 1
           },
@@ -1552,7 +1760,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+            "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
             "reason": null,
             "journalSequence": 1
           }
@@ -1583,7 +1791,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "intentId": "purchase-conflict",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1598,7 +1806,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1609,7 +1817,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "intentId": "purchase-conflict",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1624,7 +1832,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_ad5b8013-9c69-4d88-8605-ef75402048da",
+                "receiptId": "receipt_b4c30400-b93f-4069-8392-38f2e194e5e4",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1640,8 +1848,8 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:26.494Z",
-          "elapsedMs": 25,
+          "at": "2026-10-16T17:57:39.417Z",
+          "elapsedMs": 26,
           "kind": "process-checkpoint",
           "body": {
             "phase": "before-commit",
@@ -1654,18 +1862,18 @@
               },
               "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
               "status": "confirmed",
-              "receiptId": "receipt_5ba79a45-7807-4de3-b407-74336933db01",
+              "receiptId": "receipt_58bd34ef-65db-4ecc-888c-5ba7cf400d2c",
               "reason": null,
               "journalSequence": 1
             },
-            "runToken": "3436a6cf-196d-4f63-bbe5-28a4c1a0f1be",
-            "pid": 20096
+            "runToken": "845d9d20-c736-4220-b67c-3b27cda868f5",
+            "pid": 18652
           }
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:26.496Z",
-          "elapsedMs": 27,
+          "at": "2026-10-16T17:57:39.419Z",
+          "elapsedMs": 28,
           "kind": "transport-error",
           "request": {
             "method": "POST",
@@ -1684,8 +1892,8 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:26.500Z",
-          "elapsedMs": 31,
+          "at": "2026-10-16T17:57:39.423Z",
+          "elapsedMs": 32,
           "kind": "process-killed",
           "body": {
             "mechanism": "parent child.kill(SIGKILL)",
@@ -1694,8 +1902,8 @@
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:26.619Z",
-          "elapsedMs": 149,
+          "at": "2026-10-16T17:57:39.542Z",
+          "elapsedMs": 151,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1711,8 +1919,8 @@
         },
         {
           "sequence": 5,
-          "at": "2026-10-16T16:44:26.626Z",
-          "elapsedMs": 157,
+          "at": "2026-10-16T17:57:39.550Z",
+          "elapsedMs": 158,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -1733,15 +1941,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_1fd76c89-bf72-4350-81d8-1db57ed5dda1",
+            "receiptId": "receipt_9c83f66f-5434-4a43-a7b9-be4483789b48",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 6,
-          "at": "2026-10-16T16:44:26.628Z",
-          "elapsedMs": 158,
+          "at": "2026-10-16T17:57:39.551Z",
+          "elapsedMs": 160,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1753,7 +1961,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_1fd76c89-bf72-4350-81d8-1db57ed5dda1",
+                "receiptId": "receipt_9c83f66f-5434-4a43-a7b9-be4483789b48",
                 "intentId": "purchase-crash-before-commit",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1768,7 +1976,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_1fd76c89-bf72-4350-81d8-1db57ed5dda1",
+                "receiptId": "receipt_9c83f66f-5434-4a43-a7b9-be4483789b48",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1900,7 +2108,7 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:26.779Z",
+          "at": "2026-10-16T17:57:39.701Z",
           "elapsedMs": 26,
           "kind": "process-checkpoint",
           "body": {
@@ -1914,17 +2122,17 @@
               },
               "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
               "status": "confirmed",
-              "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+              "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
               "reason": null,
               "journalSequence": 1
             },
-            "runToken": "abb7af21-738c-445f-b921-cbd22980022f",
-            "pid": 18020
+            "runToken": "d3c2d18e-1eb3-4ac9-8b24-92c7c05c7741",
+            "pid": 22436
           }
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:26.781Z",
+          "at": "2026-10-16T17:57:39.703Z",
           "elapsedMs": 28,
           "kind": "transport-error",
           "request": {
@@ -1944,7 +2152,7 @@
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:26.785Z",
+          "at": "2026-10-16T17:57:39.707Z",
           "elapsedMs": 32,
           "kind": "process-killed",
           "body": {
@@ -1954,8 +2162,8 @@
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:26.909Z",
-          "elapsedMs": 155,
+          "at": "2026-10-16T17:57:39.832Z",
+          "elapsedMs": 157,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -1967,7 +2175,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+                "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
                 "intentId": "purchase-crash-after-commit",
                 "offerId": "workshop",
                 "quantity": 1
@@ -1982,7 +2190,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+                "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -1991,8 +2199,8 @@
         },
         {
           "sequence": 5,
-          "at": "2026-10-16T16:44:26.912Z",
-          "elapsedMs": 158,
+          "at": "2026-10-16T17:57:39.835Z",
+          "elapsedMs": 160,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -2013,15 +2221,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+            "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 6,
-          "at": "2026-10-16T16:44:26.913Z",
-          "elapsedMs": 159,
+          "at": "2026-10-16T17:57:39.837Z",
+          "elapsedMs": 162,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -2033,7 +2241,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+                "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
                 "intentId": "purchase-crash-after-commit",
                 "offerId": "workshop",
                 "quantity": 1
@@ -2048,7 +2256,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+                "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -2140,7 +2348,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+            "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
             "reason": null,
             "journalSequence": 1
           },
@@ -2152,7 +2360,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_7207eba8-4c74-4e83-93ef-eb3bdc2617c0",
+            "receiptId": "receipt_ffbd8bed-ddaa-408d-a53a-0d44380714a8",
             "reason": null,
             "journalSequence": 1
           }
@@ -2208,7 +2416,7 @@
       "observations": [
         {
           "sequence": 1,
-          "at": "2026-10-16T16:44:27.166Z",
+          "at": "2026-10-16T17:57:40.091Z",
           "elapsedMs": 12,
           "kind": "http",
           "request": {
@@ -2230,15 +2438,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 2,
-          "at": "2026-10-16T16:44:27.168Z",
-          "elapsedMs": 13,
+          "at": "2026-10-16T17:57:40.093Z",
+          "elapsedMs": 14,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -2259,15 +2467,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 3,
-          "at": "2026-10-16T16:44:27.171Z",
-          "elapsedMs": 17,
+          "at": "2026-10-16T17:57:40.103Z",
+          "elapsedMs": 24,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -2288,15 +2496,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 4,
-          "at": "2026-10-16T16:44:27.172Z",
-          "elapsedMs": 18,
+          "at": "2026-10-16T17:57:40.104Z",
+          "elapsedMs": 25,
           "kind": "http",
           "request": {
             "method": "POST",
@@ -2317,15 +2525,15 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
         },
         {
           "sequence": 5,
-          "at": "2026-10-16T16:44:27.174Z",
-          "elapsedMs": 19,
+          "at": "2026-10-16T17:57:40.106Z",
+          "elapsedMs": 27,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -2337,7 +2545,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "intentId": "purchase-shared-intent",
                 "offerId": "workshop",
                 "quantity": 1
@@ -2352,7 +2560,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -2361,8 +2569,8 @@
         },
         {
           "sequence": 6,
-          "at": "2026-10-16T16:44:27.175Z",
-          "elapsedMs": 21,
+          "at": "2026-10-16T17:57:40.108Z",
+          "elapsedMs": 28,
           "kind": "http",
           "request": {
             "method": "GET",
@@ -2374,7 +2582,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "intentId": "purchase-shared-intent",
                 "offerId": "workshop",
                 "quantity": 1
@@ -2389,7 +2597,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -2529,7 +2737,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2541,7 +2749,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2557,7 +2765,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2569,7 +2777,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2585,7 +2793,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2597,7 +2805,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2613,7 +2821,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2625,7 +2833,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2665,7 +2873,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2677,7 +2885,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2693,7 +2901,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2705,7 +2913,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2721,7 +2929,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2733,7 +2941,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2749,7 +2957,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           },
@@ -2761,7 +2969,7 @@
             },
             "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
             "status": "confirmed",
-            "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+            "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
             "reason": null,
             "journalSequence": 1
           }
@@ -2792,7 +3000,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "intentId": "purchase-shared-intent",
                 "offerId": "workshop",
                 "quantity": 1
@@ -2807,7 +3015,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "reason": null,
                 "journalSequence": 1
               }
@@ -2818,7 +3026,7 @@
             "remainingCapacity": 11,
             "effects": [
               {
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "intentId": "purchase-shared-intent",
                 "offerId": "workshop",
                 "quantity": 1
@@ -2833,7 +3041,7 @@
                 },
                 "commandHash": "b229b3b4d256736205b4d40da1c108fb73fb9043f6336adcfb6c94781a53f1ee",
                 "status": "confirmed",
-                "receiptId": "receipt_68ec93a4-b334-4d69-bb1f-1e9f00682e27",
+                "receiptId": "receipt_c4b29cbb-4ee8-49bf-a2a9-f50520b73100",
                 "reason": null,
                 "journalSequence": 1
               }

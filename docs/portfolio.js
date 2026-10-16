@@ -44,16 +44,17 @@ const copy = {
     footer: 'Built to be explored, questioned and improved.',
     report: 'Read the recorded run',
     caseNote: 'Read the engineering note',
+    historyNote: 'Explore the observed history',
     recorded: 'Recorded local run',
     pendingReport: 'Recorded report being prepared',
-    revision: 'Source revision',
+    revision: 'Recorded run source',
     projects: {
       intent: {
         category: 'Commerce systems',
         status: 'Recorded execution',
         question: 'The response disappeared. The reservation didn’t.',
         description:
-          'A React client and SQLite journal make an uncertain reservation outcome visible. Real HTTP faults and process termination show why retries must preserve identity—and why a 404 does not mean an earlier request cannot still commit.',
+          'A recovery state machine, durable decision journal and bounded API-history checker. Lost responses and late commits expose what retries must preserve—and what the screen still cannot know.',
         labels: ['Intent', 'Committed', 'No response'],
         visualLabel: 'INTENT / RESULT / RECOVERY',
         visualNote: 'Recover by identity, not by guessing the outcome.',
@@ -64,7 +65,7 @@ const copy = {
         status: 'Real Git experiment',
         question: 'A check passed. Did we select the code it checked?',
         description:
-          'Approval stays tied to an immutable Git candidate and an independent checker policy. A real TypeScript comparison shows how strict: true plus noCheck: true can weaken the meaning of a named check.',
+          'An approval harness binds immutable Git candidates to independently defined checks. A deliberate TypeScript control shows why the checked code and the policy behind “passed” must stay together.',
         labels: ['Candidate', 'Evidence', 'Git ref'],
         visualLabel: 'ARTIFACT / POLICY / APPROVAL',
         visualNote: 'Bind the artifact and the meaning of its evidence.',
@@ -75,7 +76,7 @@ const copy = {
         status: 'Four policies compared',
         question: 'The permit was returned. The work was still running.',
         description:
-          'Real Apollo Federation HTTP calls show how a limiter can report spare capacity while abandoned work keeps running. Four policies separate the caller’s deadline, permit ownership and actual settlement, using synthetic jobs and an independent event checker.',
+          'Request-scoped cancellation and permits held until work settles. Four policies expose how a healthy-looking limiter can hide excess work, and the tradeoff between rejecting new requests and cancelling cooperative work.',
         labels: ['Client leaves', 'Gateway stops waiting', 'Work remains?'],
         visualLabel: 'CANCELLATION / CAPACITY / COMPLETION',
         visualNote: 'Track physical work beyond the caller’s wait.',
@@ -128,16 +129,17 @@ const copy = {
     footer: '살펴보고, 질문하고, 더 나아질 수 있도록.',
     report: '실행 기록 읽어보기',
     caseNote: '설계 판단 읽어보기',
+    historyNote: '관측 순서 살펴보기',
     recorded: '기록된 로컬 실행',
     pendingReport: '실행 기록 보고서 준비 중',
-    revision: '소스 버전',
+    revision: '기록 당시 소스 버전',
     projects: {
       intent: {
         category: '커머스 시스템',
         status: '실행 기록 제공',
         question: '응답은 사라졌지만, 예약은 남았다.',
         description:
-          'React 클라이언트와 SQLite 기록으로 결과를 알 수 없는 예약을 복구합니다. 실제 HTTP 장애와 프로세스 종료를 통해 재시도에서 유지할 식별자와, 404만으로 예약 실패를 단정할 수 없는 이유를 재현했습니다.',
+          '복구 상태 모델, 영속 결정 기록, API 관측 순서 검사기를 구현했습니다. 응답 유실과 지연 커밋을 통해 재시도에서 지킬 식별자와 화면이 아직 알 수 없는 결과를 구분합니다.',
         labels: ['사용자의 의도', '커밋 완료', '응답 유실'],
         visualLabel: '의도 / 결과 / 복구',
         visualNote: '결과를 추측하지 않고, 같은 의도로 다시 확인합니다.',
@@ -148,7 +150,7 @@ const copy = {
         status: '실제 Git 실험',
         question: '검사는 통과했다. 반영할 코드는 같은가?',
         description:
-          '승인을 불변 Git 후보와 독립된 검사 정책에 연결합니다. strict: true와 noCheck: true를 함께 설정한 실제 TypeScript 실행으로, 검사 이름만으로 그 의미를 믿을 수 없는 경우를 재현했습니다.',
+          '불변 Git 후보와 독립된 검사 정책에 승인을 연결하는 실행 도구입니다. 의도적으로 검사 설정을 약화한 TypeScript 대조군으로, 검토한 코드와 ‘통과’의 의미를 함께 보존해야 하는 이유를 보여줍니다.',
         labels: ['변경 후보', '검증 근거', 'Git ref'],
         visualLabel: '산출물 / 정책 / 승인',
         visualNote: '산출물뿐 아니라, 검증 근거의 의미까지 연결합니다.',
@@ -159,7 +161,7 @@ const copy = {
         status: '네 가지 정책 비교',
         question: '허가는 돌아왔는데, 작업은 끝나지 않았다.',
         description:
-          '호출이 끝나자 허가를 반환하면 실행 한도에 여유가 있어 보여도 작업은 계속 쌓일 수 있습니다. 실제 Apollo Federation HTTP 호출과 가상 작업으로 네 가지 정책을 비교하고, 호출 기한·허가의 수명·작업 종료를 따로 검증했습니다.',
+          '요청별 취소 신호를 전달하고 실제 작업 종료까지 실행 허가를 유지합니다. 네 가지 정책으로 정상처럼 보이는 제한기 뒤의 초과 작업과, 추가 요청 거절·협력적 취소의 차이를 드러냅니다.',
         labels: ['클라이언트 이탈', '게이트웨이 대기 종료', '실제 작업은?'],
         visualLabel: '취소 / 처리 용량 / 완료',
         visualNote: '호출자의 대기 이후에도 남은 작업을 추적합니다.',
@@ -169,10 +171,20 @@ const copy = {
   },
 };
 const projects = [
-  { id: 'intent', title: 'Intent / Recovery', revision: '46c889e', url: 'evidence/intent/' },
   {
-    id: 'change', title: 'Verified Change', revision: '5eb3fe8',
-    url: 'evidence/change/', note: 'notes/verified-change/',
+    id: 'intent',
+    title: 'Intent / Recovery',
+    revision: 'e081192',
+    url: 'evidence/intent/',
+    note: 'evidence/history/',
+    noteLabel: 'historyNote',
+  },
+  {
+    id: 'change',
+    title: 'Verified Change',
+    revision: '5eb3fe8',
+    url: 'evidence/change/',
+    note: 'notes/verified-change/',
   },
   {
     id: 'cancellation',
@@ -225,9 +237,10 @@ function renderProjects(t) {
       for (const tag of text.tags) tags.append(element('span', 'tag', tag));
       const links = element('div', 'project-links');
       if (project.note) {
-        const noteLink = element('a', '', t.caseNote + ' →');
+        const label = t[project.noteLabel ?? 'caseNote'];
+        const noteLink = element('a', '', label + ' →');
         noteLink.href = project.note;
-        noteLink.setAttribute('aria-label', project.title + ' — ' + t.caseNote);
+        noteLink.setAttribute('aria-label', project.title + ' — ' + label);
         links.append(noteLink);
       }
       if (project.url) {

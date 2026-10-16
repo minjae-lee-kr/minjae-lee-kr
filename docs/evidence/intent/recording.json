@@ -2,11 +2,11 @@
   "kind": "recorded-local-run",
   "readOnly": true,
   "repository": "intent-recovery-lab",
-  "sourceRevision": "46c889ef1948f19fd88ebcc4ca9321bea22e3e17",
+  "sourceRevision": "e081192189297311b1ebc9e8b40d2ef1993b578a",
   "sourceDirty": false,
-  "generatedAt": "2026-10-16T16:44:27.302Z",
-  "sourceFingerprint": "f1282e390925e7019ccf3384dfc4848aef3e5f006581174bc7576230b75843ec",
-  "originalEvidenceSha256": "2315820a1e0eec0f18f2115224f1e657a5c36f1f43696a5d37cdfdeca2384e23",
+  "generatedAt": "2026-10-16T17:57:40.242Z",
+  "sourceFingerprint": "ee085e5381cee18ca25d18b81c6ebd8e24751893958770c4b07b264cb6feac0b",
+  "originalEvidenceSha256": "a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14",
   "evidenceFile": "evidence.json",
   "displayAdaptations": [
     "relative asset URLs",
@@ -17,7 +17,7 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "6cbb4ce1c0093f90419389d0875abbe9e4621f543c8de27fc26043f9e616244f"
+      "sha256": "806b17decf978dd3be3a1a5529aef590dd698692c4a687e2e54e9446da54a638"
     },
     {
       "path": "report.css",
@@ -29,7 +29,7 @@
     },
     {
       "path": "evidence.json",
-      "sha256": "2315820a1e0eec0f18f2115224f1e657a5c36f1f43696a5d37cdfdeca2384e23"
+      "sha256": "a6174c07e38d4befeb39cb76d10705a3153ed3d636637e27bb03a5146f19fb14"
     }
   ]
 }

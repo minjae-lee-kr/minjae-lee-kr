@@ -10,17 +10,19 @@ I’m Minjae, a software engineer at NAVER. My work spans commerce experiences, 
 
 These are independent implementations with synthetic data. The questions are practical; the limits are explicit.
 
-| Work                  | The question                                                                   | Evidence                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Intent / Recovery** | After a response disappears, how do we recover the same durable intent?        | Real HTTP response loss, SQLite and process crashes. [Recorded local run](docs/evidence/intent/).                                                       |
-| **Verified Change**   | Did we select the code—and the verification policy—that was actually reviewed? | Immutable Git candidates, real checker processes and conditional ref updates. [Recorded local run](docs/evidence/change/).                              |
+| Work                  | The question                                                                   | Evidence                                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Intent / Recovery** | After a response disappears, how do we recover the same durable intent?        | Real HTTP response loss, SQLite and process crashes. [Recorded local run](docs/evidence/intent/).                               |
+| **Verified Change**   | Did we select the code—and the verification policy—that was actually reviewed? | Immutable Git candidates, real checker processes and conditional ref updates. [Recorded local run](docs/evidence/change/).      |
 | **Cancellation Debt** | When the gateway stops waiting, what work still occupies capacity?             | Four policies compare request cancellation, permits and physical completion. [Recorded local run](docs/evidence/cancellation/). |
 
-The source repositories are pending publication. These report bundles are read-only records of local execution, not live services or production claims. The [local portfolio hub](docs/index.html) provides Korean and English views.
+The source repositories are pending publication. These report bundles are read-only records of local execution, not live services or production claims. To browse the Korean/English portfolio, run `npm start` and open `http://127.0.0.1:4173`. Relative report links above open source folders on GitHub; they are not hosted demos.
 
 A smaller public tool: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards) distinguishes “nothing found” from “nothing checked.”
 
 Two reading guides connect the design decisions to their raw evidence: [Verify what “passed” means](docs/notes/verified-change/) and [The permit returned. The work remained](docs/notes/cancellation-debt/). Both include Korean and English views and annotated figures.
+
+Intent also includes an [observed-history explorer](docs/evidence/history/): the same final ledger can accompany incompatible reads. It separates actual HTTP observations from one deliberately altered response and one possible sequential explanation.
 
 ### How I work
 
