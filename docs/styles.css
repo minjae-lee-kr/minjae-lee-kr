@@ -341,6 +341,18 @@ h2 {
   border-bottom: 1px solid #84968b;
   padding-bottom: 3px;
 }
+.evidence-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 16px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.evidence-links a {
+  color: var(--muted);
+  text-underline-offset: 4px;
+}
 .project-links .pending,
 .source-revision {
   font-size: 10px;

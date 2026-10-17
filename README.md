@@ -16,7 +16,9 @@ These are independent implementations with synthetic data. The questions are pra
 | **Verified Change**   | Did we select the code—and the verification policy—that was actually reviewed? | Immutable Git candidates, real checker processes and conditional ref updates. [Recorded local run](docs/evidence/change/).      |
 | **Cancellation Debt** | When the gateway stops waiting, what work still occupies capacity?             | Four policies compare request cancellation, permits and physical completion. [Recorded local run](docs/evidence/cancellation/). |
 
-The source repositories are pending publication. These report bundles are read-only records of local execution, not live services or production claims. To browse the Korean/English portfolio, run `npm start` and open `http://127.0.0.1:4173`. Relative report links above open source folders on GitHub; they are not hosted demos.
+Public source: [Intent / Recovery](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Verified Change](https://github.com/minjae-lee-kr/verified-change-lab) · [Cancellation Debt](https://github.com/minjae-lee-kr/federated-catalog-lab).
+
+These report bundles are read-only records of local execution, not live services or production claims. To browse the Korean/English portfolio, run `npm start` and open `http://127.0.0.1:4173`. Relative report links above open source folders on GitHub; they are not hosted demos.
 
 A smaller public tool: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards) distinguishes “nothing found” from “nothing checked.”
 

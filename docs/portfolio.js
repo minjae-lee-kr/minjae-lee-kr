@@ -21,7 +21,7 @@ const copy = {
     workTitle: 'Start with the difficult case.',
     workLead: 'Real local I/O. Reproducible counterexamples. The limits are part of the result.',
     publication:
-      'Source repositories are pending publication. The linked reports are read-only recordings of local runs.',
+      'Explore the public source or inspect a recorded local run. Reports are read-only evidence, with their original source revisions preserved.',
     smallTool: 'A SMALL PUBLIC TOOL',
     guardsDescription:
       'Distinguish “nothing found” from “nothing checked.” A compact companion to the larger experiments.',
@@ -43,6 +43,7 @@ const copy = {
     article: 'Read the engineering note',
     footer: 'Built to be explored, questioned and improved.',
     report: 'Read the recorded run',
+    source: 'Explore the source',
     caseNote: 'Read the engineering note',
     historyNote: 'Explore the observed history',
     recorded: 'Recorded local run',
@@ -106,7 +107,7 @@ const copy = {
     workTitle: '어려운 상황에서 시작합니다.',
     workLead: '실제 로컬 I/O와 재현 가능한 반례. 증명할 수 있는 범위까지 함께 보여줍니다.',
     publication:
-      '소스 저장소는 공개 준비 중입니다. 연결된 보고서는 로컬 실행을 기록한 읽기 전용 자료입니다.',
+      '공개 소스와 실제 실행 기록을 함께 볼 수 있습니다. 보고서는 기록 당시 소스 버전을 보존한 읽기 전용 근거입니다.',
     smallTool: '공개된 작은 도구',
     guardsDescription:
       '“발견한 문제가 없음”과 “검사한 것이 없음”을 구분합니다. 더 큰 실험의 출발점이 된 작은 도구입니다.',
@@ -128,6 +129,7 @@ const copy = {
     article: '엔지니어링 글 읽기',
     footer: '살펴보고, 질문하고, 더 나아질 수 있도록.',
     report: '실행 기록 읽어보기',
+    source: '소스 코드 살펴보기',
     caseNote: '설계 판단 읽어보기',
     historyNote: '관측 기록 살펴보기',
     recorded: '기록된 로컬 실행',
@@ -174,6 +176,7 @@ const projects = [
   {
     id: 'intent',
     title: 'Intent / Recovery',
+    source: 'https://github.com/minjae-lee-kr/intent-recovery-lab',
     revision: 'e081192',
     url: 'evidence/intent/',
     note: 'notes/retention-boundary/',
@@ -182,6 +185,7 @@ const projects = [
   {
     id: 'change',
     title: 'Verified Change',
+    source: 'https://github.com/minjae-lee-kr/verified-change-lab',
     revision: '5eb3fe8',
     url: 'evidence/change/',
     note: 'notes/verified-change/',
@@ -189,6 +193,7 @@ const projects = [
   {
     id: 'cancellation',
     title: 'Cancellation Debt',
+    source: 'https://github.com/minjae-lee-kr/federated-catalog-lab',
     revision: 'ff47d27',
     url: 'evidence/cancellation/',
     note: 'notes/cancellation-debt/',
@@ -248,17 +253,23 @@ function renderProjects(t) {
         noteLink.setAttribute('aria-label', project.title + ' — ' + label);
         links.append(noteLink);
       }
+      const sourceLink = element('a', '', t.source + ' ↗');
+      sourceLink.href = project.source;
+      sourceLink.rel = 'noreferrer';
+      sourceLink.setAttribute('aria-label', project.title + ' — ' + t.source);
+      links.append(sourceLink);
+      const evidenceLinks = element('div', 'evidence-links');
       if (project.url) {
         const link = element('a', '', t.report + ' ↗');
         link.href = project.url;
         link.setAttribute('aria-label', project.title + ' — ' + t.report);
-        links.append(link);
-      } else links.append(element('span', 'pending', t.pendingReport));
+        evidenceLinks.append(link);
+      } else evidenceLinks.append(element('span', 'pending', t.pendingReport));
       if (project.history) {
         const historyLink = element('a', '', t.historyNote + ' →');
         historyLink.href = project.history;
         historyLink.setAttribute('aria-label', project.title + ' — ' + t.historyNote);
-        links.append(historyLink);
+        evidenceLinks.append(historyLink);
       }
       const revision = element('p', 'source-revision', t.revision + ' ' + project.revision);
       body.append(
@@ -268,6 +279,7 @@ function renderProjects(t) {
         element('p', 'description', text.description),
         tags,
         links,
+        evidenceLinks,
         revision,
       );
       card.append(visual, body);

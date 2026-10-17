@@ -16,7 +16,9 @@
 | **Verified Change**   | 검토한 코드와 검사 정책이 실제 반영 대상에도 그대로 적용됐을까?      | 불변 Git 후보, 실제 검사 프로세스, 조건부 ref 변경. [기록된 로컬 실행](docs/evidence/change/).            |
 | **Cancellation Debt** | 게이트웨이가 대기를 멈춘 뒤 어떤 작업이 여전히 처리 용량을 차지할까? | 요청 취소, 허가, 실제 작업 완료를 비교하는 네 가지 정책. [기록된 로컬 실행](docs/evidence/cancellation/). |
 
-소스 저장소는 공개 준비 중입니다. 보고서는 로컬 실행을 기록한 읽기 전용 자료이며, 실시간 서비스나 실서비스 성과를 나타내지 않습니다. `npm start` 후 `http://127.0.0.1:4173`을 열면 한·영 포트폴리오를 볼 수 있습니다. 위 상대 링크는 GitHub에서 소스 폴더로 열리며, 호스팅된 데모 주소가 아닙니다.
+공개 소스: [Intent / Recovery](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Verified Change](https://github.com/minjae-lee-kr/verified-change-lab) · [Cancellation Debt](https://github.com/minjae-lee-kr/federated-catalog-lab).
+
+보고서는 로컬 실행을 기록한 읽기 전용 자료이며, 실시간 서비스나 실서비스 성과를 나타내지 않습니다. `npm start` 후 `http://127.0.0.1:4173`을 열면 한·영 포트폴리오를 볼 수 있습니다. 위 상대 링크는 GitHub에서 소스 폴더로 열리며, 호스팅된 데모 주소가 아닙니다.
 
 공개된 작은 도구인 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)는 “발견한 문제가 없음”과 “검사한 것이 없음”을 구분합니다.
 
