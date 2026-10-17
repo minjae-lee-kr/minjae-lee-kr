@@ -41,7 +41,7 @@ test('preview serves public assets, HEAD metadata and clear method errors', asyn
   try {
     const page = await fetch(preview.url);
     assert.equal(page.status, 200);
-    assert.match(await page.text(), /Minjae Lee — It works\. I have questions\./);
+    assert.match(await page.text(), /<title>Minjae Lee — [^<]+<\/title>/);
     assert.equal(page.headers.get('x-content-type-options'), 'nosniff');
     assert.match(page.headers.get('content-security-policy'), /object-src 'none'/);
     const head = await fetch(preview.url, { method: 'HEAD' });

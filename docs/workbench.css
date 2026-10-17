@@ -16,8 +16,16 @@
 .wb *::after {
   box-sizing: border-box;
 }
-.wb [hidden] {
-  display: none !important;
+.wb-panels {
+  display: grid;
+}
+/* Inactive panels still reserve their size. Switching examples does not move
+   the following section or the reader's scroll position. Inert + visibility
+   remove inactive content from focus, hit testing and the accessibility tree. */
+.wb-panel[hidden] {
+  display: grid !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 .wb-toolbar {
   display: flex;
@@ -42,14 +50,29 @@
   text-wrap: pretty;
 }
 .wb-tabs {
-  display: flex;
-  gap: 28px;
-  flex-shrink: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  flex: 1;
+  max-width: 440px;
+  min-width: 340px;
+}
+.wb-tabs::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 33.333333%;
+  height: 2px;
+  background: var(--wb-red);
+  transform: translateX(calc(var(--wb-tab-index, 0) * 100%));
+  transition: transform 160ms ease-out;
 }
 .wb-tab {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   min-width: 0;
   min-height: 48px;
@@ -71,25 +94,19 @@
 .wb-tab[aria-selected="true"] {
   color: var(--wb-ink);
 }
-.wb-tab[aria-selected="true"]::after {
-  content: "";
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--wb-red);
-}
 .wb :is(button, a, input, [role="tabpanel"]):focus-visible {
   outline: 2px solid var(--wb-blue);
   outline-offset: 5px;
 }
 .wb-panel {
+  grid-area: 1 / 1;
   display: grid;
   grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   column-gap: clamp(32px, 5vw, 76px);
-  row-gap: 24px;
-  padding: 36px 0 4px;
+  row-gap: 28px;
+  grid-template-rows: 1fr auto;
+  align-content: start;
+  padding: 32px 0 4px;
 }
 .wb-copy {
   min-width: 0;
@@ -105,7 +122,7 @@
   font-size: clamp(24px, 2.8vw, 32px);
   line-height: 1.35;
   letter-spacing: -0.9px;
-  font-weight: 550;
+  font-weight: 650;
   text-wrap: pretty;
   word-break: keep-all;
 }
@@ -116,9 +133,6 @@
   color: #575b53;
   text-wrap: pretty;
   word-break: keep-all;
-}
-.wb-action-slot {
-  margin: 22px 0 0;
 }
 .wb-action {
   padding: 10px 15px;
@@ -133,6 +147,10 @@
   cursor: pointer;
   text-align: left;
   line-height: 1.5;
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  transition: background-color 160ms ease-out;
 }
 .wb-action:hover {
   background: #373a33;
@@ -165,7 +183,7 @@
 }
 .wb-visual {
   min-width: 0;
-  align-self: center;
+  align-self: start;
 }
 .wb-route {
   display: flex;
@@ -174,7 +192,7 @@
   gap: 12px;
   font-size: 11px;
   color: var(--wb-muted);
-  margin: 0 16px 22px;
+  margin: 0 0 14px;
 }
 .wb-lost {
   display: flex;
@@ -193,28 +211,12 @@
 }
 .wb-receipt {
   position: relative;
-  margin: 0 16px 8px;
-  padding: 24px 27px 27px;
-  background: #fffefa;
+  margin: 0;
+  padding: 22px 24px;
+  background: #fff;
   border: 1px solid #dfddd3;
-  border-radius: 2px;
-  box-shadow:
-    0 4px 0 -2px #ece9e0,
-    0 13px 30px -24px #504534;
-  transform: rotate(-1deg);
-  transition:
-    transform 240ms ease,
-    border-color 240ms ease;
-}
-.wb-receipt::before {
-  content: "";
-  position: absolute;
-  width: 42px;
-  height: 13px;
-  top: -7px;
-  left: calc(50% - 21px);
-  background: #e7e1d2b8;
-  transform: rotate(3deg);
+  border-radius: 4px;
+  transition: border-color 160ms ease-out;
 }
 .wb-paper-label {
   color: var(--wb-muted);
@@ -222,9 +224,9 @@
 }
 .wb-receipt-title {
   display: block;
-  font-size: clamp(20px, 2.8vw, 30px);
+  font-size: clamp(21px, 2.5vw, 28px);
   line-height: 1.35;
-  font-weight: 540;
+  font-weight: 630;
   letter-spacing: -0.7px;
 }
 .wb-receipt-detail {
@@ -233,7 +235,7 @@
   color: var(--wb-muted);
   max-width: 330px;
   margin: 12px 0 22px;
-  min-height: 41px;
+  min-height: 3.4em;
   text-wrap: pretty;
 }
 .wb-receipt-lines {
@@ -244,7 +246,7 @@
   line-height: 1.5;
   margin: 0;
   padding-top: 17px;
-  border-top: 1px dashed #cccabd;
+  border-top: 1px solid var(--wb-line);
 }
 .wb-receipt-lines dt {
   color: var(--wb-muted);
@@ -254,42 +256,14 @@
   font-weight: 550;
   text-align: right;
 }
-.wb-stamp {
-  display: block;
-  width: max-content;
-  margin: 18px 0 0 auto;
-  border: 1px solid var(--wb-blue);
-  border-radius: 2px;
-  color: var(--wb-blue);
-  font-size: 9px;
-  letter-spacing: 1.2px;
-  font-weight: 650;
-  padding: 3px 7px;
-  opacity: 0;
-  transform: rotate(-5deg) scale(1.15);
-  transform-origin: right center;
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
-}
-.wb-stamp::before {
-  content: "✓";
-  margin-right: 5px;
-  font-size: 11px;
-}
 .wb-receipt[data-revealed="true"] {
-  transform: rotate(0);
   border-color: #95b0e9;
 }
 .wb-receipt[data-revealed="true"] .wb-receipt-title {
   color: var(--wb-blue);
 }
-.wb-receipt[data-revealed="true"] .wb-stamp {
-  opacity: 1;
-  transform: rotate(-5deg) scale(1);
-}
 .wb-code-sheet {
-  background: #fffefa;
+  background: #fff;
   border: 1px solid #dfddd3;
   padding: 23px 25px 0;
   border-radius: 3px;
@@ -339,6 +313,8 @@
 .wb-check-verdict {
   margin: 0 -25px;
   padding: 17px 25px 19px;
+  min-height: 108px;
+  transition: background-color 160ms ease-out;
   border-top: 1px solid var(--wb-line);
   background: #f1f3ee;
 }
@@ -352,6 +328,7 @@
   line-height: 1.65;
   margin: 6px 0 0;
   color: var(--wb-muted);
+  min-height: 3.3em;
 }
 [data-independent="true"] .wb-check-verdict {
   background: #fbefe9;
@@ -413,6 +390,7 @@
   background: #93998b;
   width: min(var(--wb-progress), 33.333%);
   border-radius: inherit;
+  transition: width 160ms ease-out;
 }
 .wb-wait-track {
   background: linear-gradient(to right, #e7e8e1 33.333%, transparent 33.333%);
@@ -440,6 +418,7 @@
   height: 33px;
   background: var(--wb-ink);
   z-index: 1;
+  transition: left 160ms ease-out;
 }
 .wb-cursor::before {
   content: "";
@@ -479,7 +458,7 @@
 .wb-range {
   display: block;
   width: 100%;
-  min-height: 34px;
+  min-height: 44px;
   margin: 0;
   accent-color: var(--wb-blue);
   cursor: pointer;
@@ -488,7 +467,7 @@
   font-size: 13px;
   line-height: 1.7;
   margin: 10px 0 0;
-  min-height: 41px;
+  min-height: 3.4em;
   text-wrap: pretty;
 }
 .wb-sr {
@@ -515,7 +494,8 @@
     margin-top: 9px;
   }
   .wb-tabs {
-    gap: 20px;
+    min-width: 0;
+    max-width: none;
     border-bottom: 1px solid var(--wb-line);
   }
   .wb-tab {
@@ -524,8 +504,12 @@
   }
   .wb-panel {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding-top: 26px;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    padding-top: 22px;
+  }
+  .wb-project {
+    display: none;
   }
   .wb-panel-footer {
     flex-direction: column;
@@ -533,6 +517,13 @@
   }
   .wb-copy h3 {
     max-width: 500px;
+    font-size: 23px;
+    margin-bottom: 10px;
+    letter-spacing: -0.55px;
+  }
+  .wb-body {
+    font-size: 14px;
+    line-height: 1.7;
   }
   .wb-body,
   .wb-boundary {
@@ -544,18 +535,40 @@
     justify-self: center;
   }
   .wb-receipt {
-    margin-left: 7px;
-    margin-right: 7px;
+    margin: 0;
+    padding: 20px;
   }
   .wb-route {
-    margin-left: 7px;
-    margin-right: 7px;
+    margin-inline: 0;
+  }
+  .wb-receipt-detail {
+    margin-block: 10px 16px;
+  }
+  .wb-paper-label {
+    margin-bottom: 12px;
+  }
+  .wb-check-verdict {
+    min-height: 100px;
+    padding-block: 14px;
+  }
+  .wb-code-sheet {
+    padding-top: 18px;
+  }
+  .wb-code {
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .wb-policy {
+    padding-block: 10px;
+  }
+  .wb-timeline {
+    padding-top: 8px;
+  }
+  .wb-range-label {
+    margin-top: 16px;
   }
 }
 @media (max-width: 390px) {
-  .wb-tabs {
-    gap: 15px;
-  }
   .wb-tab {
     font-size: 11px;
     gap: 5px;

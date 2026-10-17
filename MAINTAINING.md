@@ -19,6 +19,8 @@ The home page's `workbench.js` is an explanatory model, not an experiment runner
 
 The tabs support arrow keys, Home and End. The timeline uses a native range input, and motion respects `prefers-reduced-motion`. Review keyboard focus, narrow screens, language changes and browser Back after editing interactions. Do not trade readable results or ordinary navigation for decorative motion.
 
+The three panels share a CSS grid cell so an inactive scene still reserves its layout size. Hidden panels also use `visibility: hidden` and `inert`; they must never appear in the accessibility tree or keyboard order. Keep outcome blocks tall enough for both states in each language. Controls sit beside their results, and state transitions use 160 ms without moving the document. Anchor navigation uses ordinary browser scrolling, with the top anchor on the body so returning home includes the header.
+
 SUIT Variable is self-hosted under `docs/assets/fonts/`; its original source and SIL Open Font License accompany the unmodified font. Social images are original vector compositions and PNG exports in `docs/assets/social/`. No third-party font or analytics request is needed to read the site.
 
 ## Refreshing evidence

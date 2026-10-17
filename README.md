@@ -1,30 +1,30 @@
 [English](README.md) · [한국어](README.ko.md)
 
-# It works. I have questions.
+# It says done. What does that prove?
 
-I’m Minjae, a software engineer at NAVER working across commerce interfaces, GraphQL API servers and developer automation.
+I’m Minjae Lee, a software engineer with 7+ years in booking, ordering and payments. I work across React and TypeScript frontends, GraphQL API servers built with Apollo Federation, and AI-assisted developer tools and automation.
 
 [**Explore the portfolio · 한국어 / English →**](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/)
 
 ### 01 / Intent · Recovery
 
-**The reservation is saved. The screen missed the news.**
+**No response. Is it safe to reserve again?**
 
-Recover a reservation after its HTTP response disappears. Then ask where reusing the same key stops being enough: when the receiver’s deduplication record expires.
+Recover the outcome of a reservation after its HTTP response is lost. Then examine where retrying with the same key stops preventing duplicate effects: when the receiving system’s deduplication record expires.
 
 [Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/)
 
 ### 02 / Verified Change
 
-**Did the check pass—or did its definition change?**
+**The code passed. Who set the rules?**
 
-Compare the same code under two checking policies, then bind approval to the exact candidate and policy. A passing result should survive a closer look at what ran.
+A scripted candidate makes its compiler check pass by changing the check. Compare that result with a fixed policy, then bind approval to the exact Git candidate and verification policy. The experiment calls no LLM.
 
 [Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/) · [Source](https://github.com/minjae-lee-kr/verified-change-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/)
 
 ### 03 / Cancellation Debt
 
-**The request left. The work stayed late.**
+**The request timed out. Why is the work still running?**
 
 Track the work that remains after a GraphQL gateway stops waiting. Four cancellation policies expose the gap between returning a permit and freeing the capacity it represents.
 
