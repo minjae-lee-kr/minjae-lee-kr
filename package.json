@@ -11,6 +11,7 @@
     "start": "node scripts/serve.mjs",
     "test": "node --test",
     "bundle:evidence": "node scripts/bundle-evidence.mjs",
-    "bundle:history": "node scripts/bundle-history.mjs"
+    "bundle:history": "node scripts/bundle-history.mjs",
+    "bundle:retention": "node scripts/bundle-retention.mjs"
   }
 }

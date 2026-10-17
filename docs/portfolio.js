@@ -54,7 +54,7 @@ const copy = {
         status: 'Recorded execution',
         question: 'The response disappeared. The reservation didn’t.',
         description:
-          'A recovery state machine, durable decision journal and bounded API-history checker. Lost responses and late commits expose what retries must preserve—and what the screen still cannot know.',
+          'Recover the same request after a lost response or process crash. Then examine why a stable retry key stops protecting the result when another system forgets it.',
         labels: ['Intent', 'Committed', 'No response'],
         visualLabel: 'INTENT / RESULT / RECOVERY',
         visualNote: 'Recover by identity, not by guessing the outcome.',
@@ -65,7 +65,7 @@ const copy = {
         status: 'Real Git experiment',
         question: 'A check passed. Did we select the code it checked?',
         description:
-          'An approval harness binds immutable Git candidates to independently defined checks. A deliberate TypeScript control shows why the checked code and the policy behind “passed” must stay together.',
+          'Bind approval to the exact Git candidate and verification policy. A compiler experiment exposes how a candidate can keep a check green by changing what it checks.',
         labels: ['Candidate', 'Evidence', 'Git ref'],
         visualLabel: 'ARTIFACT / POLICY / APPROVAL',
         visualNote: 'Bind the artifact and the meaning of its evidence.',
@@ -76,7 +76,7 @@ const copy = {
         status: 'Four policies compared',
         question: 'The permit was returned. The work was still running.',
         description:
-          'Request-scoped cancellation and permits held until work settles. Four policies expose how a healthy-looking limiter can hide excess work, and the tradeoff between rejecting new requests and cancelling cooperative work.',
+          'Track work after the gateway stops waiting. Four cancellation policies reveal the gap between available permits and unfinished work—and the cost of keeping that gap closed.',
         labels: ['Client leaves', 'Gateway stops waiting', 'Work remains?'],
         visualLabel: 'CANCELLATION / CAPACITY / COMPLETION',
         visualNote: 'Track physical work beyond the caller’s wait.',
@@ -129,7 +129,7 @@ const copy = {
     footer: '살펴보고, 질문하고, 더 나아질 수 있도록.',
     report: '실행 기록 읽어보기',
     caseNote: '설계 판단 읽어보기',
-    historyNote: '관측 순서 살펴보기',
+    historyNote: '관측 기록 살펴보기',
     recorded: '기록된 로컬 실행',
     pendingReport: '실행 기록 보고서 준비 중',
     revision: '기록 당시 소스 버전',
@@ -139,7 +139,7 @@ const copy = {
         status: '실행 기록 제공',
         question: '응답은 사라졌지만, 예약은 남았다.',
         description:
-          '복구 상태 모델, 영속 결정 기록, API 관측 순서 검사기를 구현했습니다. 응답 유실과 지연 커밋을 통해 재시도에서 지킬 식별자와 화면이 아직 알 수 없는 결과를 구분합니다.',
+          '응답 유실과 프로세스 종료 뒤에도 같은 요청의 결과를 복구합니다. 두 시스템으로 경계를 넓혀, 상대가 기록을 지우면 같은 재시도 키도 충분하지 않음을 확인합니다.',
         labels: ['사용자의 의도', '커밋 완료', '응답 유실'],
         visualLabel: '의도 / 결과 / 복구',
         visualNote: '결과를 추측하지 않고, 같은 의도로 다시 확인합니다.',
@@ -150,7 +150,7 @@ const copy = {
         status: '실제 Git 실험',
         question: '검사는 통과했다. 반영할 코드는 같은가?',
         description:
-          '불변 Git 후보와 독립된 검사 정책에 승인을 연결하는 실행 도구입니다. 의도적으로 검사 설정을 약화한 TypeScript 대조군으로, 검토한 코드와 ‘통과’의 의미를 함께 보존해야 하는 이유를 보여줍니다.',
+          '승인을 정확한 Git 후보와 검사 정책에 연결합니다. 후보가 검사 설정을 바꿔 오류를 놓치게 하는 대조군으로, ‘통과’의 의미까지 보존해야 하는 이유를 보여줍니다.',
         labels: ['변경 후보', '검증 근거', 'Git ref'],
         visualLabel: '산출물 / 정책 / 승인',
         visualNote: '산출물뿐 아니라, 검증 근거의 의미까지 연결합니다.',
@@ -159,9 +159,9 @@ const copy = {
       cancellation: {
         category: 'GraphQL 실행 실험',
         status: '네 가지 정책 비교',
-        question: '허가는 돌아왔는데, 작업은 끝나지 않았다.',
+        question: '실행 허가는 반환됐지만, 작업은 남았다.',
         description:
-          '요청별 취소 신호를 전달하고 실제 작업 종료까지 실행 허가를 유지합니다. 네 가지 정책으로 정상처럼 보이는 제한기 뒤의 초과 작업과, 추가 요청 거절·협력적 취소의 차이를 드러냅니다.',
+          '게이트웨이가 대기를 끝낸 뒤에도 남는 작업을 추적합니다. 네 가지 취소 정책으로 실행 허가와 미완료 작업 수의 차이, 그리고 그 차이를 막기 위해 감수해야 하는 비용을 비교합니다.',
         labels: ['클라이언트 이탈', '게이트웨이 대기 종료', '실제 작업은?'],
         visualLabel: '취소 / 처리 용량 / 완료',
         visualNote: '호출자의 대기 이후에도 남은 작업을 추적합니다.',
@@ -176,8 +176,8 @@ const projects = [
     title: 'Intent / Recovery',
     revision: 'e081192',
     url: 'evidence/intent/',
-    note: 'evidence/history/',
-    noteLabel: 'historyNote',
+    note: 'notes/retention-boundary/',
+    history: 'evidence/history/',
   },
   {
     id: 'change',
@@ -209,6 +209,11 @@ const element = (tag, className, text) => {
   return node;
 };
 function renderProjects(t) {
+  const focused = document.activeElement;
+  const focusedCard = focused?.matches('#projects article a')
+    ? focused.closest('article')
+    : null;
+  const focusedHref = focusedCard ? focused.getAttribute('href') : null;
   document.querySelector('#projects').replaceChildren(
     ...projects.map((project) => {
       const text = t.projects[project.id];
@@ -249,6 +254,12 @@ function renderProjects(t) {
         link.setAttribute('aria-label', project.title + ' — ' + t.report);
         links.append(link);
       } else links.append(element('span', 'pending', t.pendingReport));
+      if (project.history) {
+        const historyLink = element('a', '', t.historyNote + ' →');
+        historyLink.href = project.history;
+        historyLink.setAttribute('aria-label', project.title + ' — ' + t.historyNote);
+        links.append(historyLink);
+      }
       const revision = element('p', 'source-revision', t.revision + ' ' + project.revision);
       body.append(
         meta,
@@ -263,6 +274,14 @@ function renderProjects(t) {
       return card;
     }),
   );
+  if (focusedCard && focusedHref) {
+    const replacement = [...document.querySelectorAll('#projects article a')].find(
+      (link) =>
+        link.closest('article').id === focusedCard.id &&
+        link.getAttribute('href') === focusedHref,
+    );
+    replacement?.focus({ preventScroll: true });
+  }
 }
 function render() {
   const t = copy[language];

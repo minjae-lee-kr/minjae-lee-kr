@@ -2,7 +2,7 @@
 
 [English](README.md) · [한국어](README.ko.md)
 
-I’m Minjae, a software engineer at NAVER. My work spans commerce experiences, GraphQL API servers and developer productivity. I want ambitious ideas to become products people can depend on—and I like making the difficult engineering decisions inspectable.
+I’m Minjae, a software engineer at NAVER working across commerce experiences, GraphQL API servers and developer productivity. I want ambitious ideas to become products people can depend on.
 
 [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/) · [Engineering note](https://www.linkedin.com/pulse/when-findings-isnt-enough-coverage-heartbeats-lee-minjae-vre0c/)
 
@@ -20,7 +20,7 @@ The source repositories are pending publication. These report bundles are read-o
 
 A smaller public tool: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards) distinguishes “nothing found” from “nothing checked.”
 
-Two reading guides connect the design decisions to their raw evidence: [Verify what “passed” means](docs/notes/verified-change/) and [The permit returned. The work remained](docs/notes/cancellation-debt/). Both include Korean and English views and annotated figures.
+Three reading guides connect the design decisions to their raw evidence: [When the key outlives the record](docs/notes/retention-boundary/), [Verify what “passed” means](docs/notes/verified-change/) and [The permit returned. The work remained](docs/notes/cancellation-debt/). Each includes Korean and English views and annotated figures.
 
 Intent also includes an [observed-history explorer](docs/evidence/history/): the same final ledger can accompany incompatible reads. It separates actual HTTP observations from one deliberately altered response and one possible sequential explanation.
 
