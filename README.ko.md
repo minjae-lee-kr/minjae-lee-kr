@@ -10,9 +10,9 @@
 
 **응답을 못 받은 예약, 다시 요청해도 될까?**
 
-응답을 못 받은 요청의 결과를 복구합니다. 별도 실험에서는 중복 방지 기록이 삭제된 뒤 같은 키로 재시도할 때의 문제를 확인했습니다.
+응답이 끊겨도 예약 결과를 다시 확인하고, 이전 요청의 응답이 현재 화면을 덮지 않도록 합니다. 중복 방지 기록이 삭제된 뒤의 재시도도 별도 실험으로 살펴봤습니다.
 
-[해설 읽기](https://minjae-lee-kr.github.io/notes/retention-boundary/) · [소스](https://github.com/minjae-lee-kr/intent-recovery-lab)
+[복구 UI의 설계 판단](https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/design.ko.md) · [소스](https://github.com/minjae-lee-kr/intent-recovery-lab)
 
 [기본 복구 실험 기록](https://minjae-lee-kr.github.io/evidence/intent/) · [보존 기간 실험 기록](https://minjae-lee-kr.github.io/notes/retention-boundary/#records)
 

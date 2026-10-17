@@ -10,9 +10,9 @@ I’m Minjae Lee, a software engineer with 7+ years in booking, ordering and pay
 
 **No response. Is it safe to reserve again?**
 
-Recover the result of a request after losing its response. A separate experiment examines retries after the receiver deletes its deduplication record.
+Recover a reservation after a lost response, without letting a superseded request overwrite the current screen. A separate experiment examines retries after deduplication records are deleted.
 
-[Read the note](https://minjae-lee-kr.github.io/notes/retention-boundary/) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab)
+[Recovery UI decisions](https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/design.md) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab)
 
 [Base recovery recording](https://minjae-lee-kr.github.io/evidence/intent/) · [Retention experiment recording](https://minjae-lee-kr.github.io/notes/retention-boundary/#records)
 
