@@ -32,6 +32,8 @@
 
 [해설 읽기](https://minjae-lee-kr.github.io/notes/cancellation-debt/) · [소스](https://github.com/minjae-lee-kr/federated-catalog-lab) · [실행 기록](https://minjae-lee-kr.github.io/evidence/cancellation/)
 
+같은 실험의 다른 주제: [검사는 통과했지만, 생성 타입은 예전 것이었다](https://minjae-lee-kr.github.io/notes/generated-consumer/)
+
 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)도 만들었습니다. “발견한 문제가 없음”과 “검사한 것이 없음”을 구분하는 도구입니다.
 
 ### 직접 재현하고 살펴보기

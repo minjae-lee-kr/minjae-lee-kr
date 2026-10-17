@@ -32,6 +32,8 @@ Releasing a permit before its work ends can exceed the execution limit. Four pol
 
 [Read the note](https://minjae-lee-kr.github.io/notes/cancellation-debt/) · [Source](https://github.com/minjae-lee-kr/federated-catalog-lab) · [Recorded run](https://minjae-lee-kr.github.io/evidence/cancellation/)
 
+From the same lab: [The checks passed. The generated types were stale.](https://minjae-lee-kr.github.io/notes/generated-consumer/)
+
 Also: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards), a tool for telling “nothing found” from “nothing checked.”
 
 ### Reproduce & inspect
