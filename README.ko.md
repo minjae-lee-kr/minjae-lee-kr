@@ -42,6 +42,8 @@
 
 [다음 조회에는 왜 오류가 없을까?](https://minjae-lee-kr.github.io/research/client-cache/) 같은 부분 응답을 Apollo Client에서 조회합니다. 받은 데이터를 남길지, 이전 값을 유지할지, HTTP 요청을 다시 보낼지에 따라 감수할 비용이 달라집니다.
 
+[오류는 사라졌는데, 재확인은 실패했습니다.](https://minjae-lee-kr.github.io/research/react-recheck/?lang=ko) React 화면에 남은 값과 재확인 결과를 실제 DOM·HTTP로 구분합니다.
+
 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)도 만들었습니다. “발견한 문제가 없음”과 “검사한 것이 없음”을 구분하는 도구입니다.
 
 ### 직접 재현하고 살펴보기

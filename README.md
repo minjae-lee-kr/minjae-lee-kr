@@ -42,6 +42,8 @@ From the same lab: [The checks passed. The generated types were stale.](https://
 
 [Why does the next query have no error?](https://minjae-lee-kr.github.io/research/client-cache/) Follow the same partial response into Apollo Client: keeping data, keeping an earlier value, or making another HTTP request each leaves a different cost.
 
+[The error disappeared. The recheck still failed.](https://minjae-lee-kr.github.io/research/react-recheck/?lang=en) Compare the value left on a React screen with the recheck outcome through actual DOM and HTTP observations.
+
 Also: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards), a tool for telling “nothing found” from “nothing checked.”
 
 ### Reproduce & inspect
