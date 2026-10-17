@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { lstat, mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withReaderContext, readerContextCss } from './reader-context.mjs';
 
 // A fixed, reviewed recording. Updating these pins requires reviewing a new run.
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -77,7 +78,7 @@ assert.equal(index.split('<body>').length, 2);
 files.set(
   'index.html',
   Buffer.from(
-    index
+    withReaderContext(index, 'history')
       .replace(
         '<body>',
         `<body>
@@ -93,7 +94,7 @@ files.set(
   'report.css',
   Buffer.from(
     files.get('report.css').toString('utf8') +
-      `
+      readerContextCss + `
 .portfolio-return{max-width:1160px;margin:auto;padding:14px 28px 0;font:12px/1.6 system-ui,sans-serif}.portfolio-return a{color:#294b7a;text-decoration:none}.portfolio-return a:hover{text-decoration:underline}.portfolio-return a:focus-visible{outline:2px solid #294b7a;outline-offset:4px}html[lang=ko] .return-en,html:not([lang=ko]) .return-ko{display:none}
 `,
   ),
@@ -108,6 +109,7 @@ const manifest = {
   evidenceSha256: evidenceDigest,
   displayAdaptations: [
     'Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css',
+    'Standalone bilingual scenario, ledger definition and control-method explanation; original observations unchanged',
   ],
   note: 'The upstream manifest identifies original export bytes. This manifest identifies the portfolio files. Both are unsigned provenance, not attestation.',
   files: [...files].map(([path, bytes]) => ({ path, sha256: hash(bytes) })),

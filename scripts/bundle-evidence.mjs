@@ -7,6 +7,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { validateRecording } from './recording-contract.mjs';
 import { adaptCancellationDisplay } from './cancellation-display.mjs';
+import { withReaderContext, readerContextCss } from './reader-context.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const parent = path.dirname(root);
@@ -150,6 +151,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
     let text = original.toString('utf8');
     safeText(text, input);
     if (file.endsWith('.html')) {
+      text = withReaderContext(text, source.id);
       text = text.replace('<body>', `<body>\n${banner}`);
       if (source.id === 'change')
         text = text
@@ -158,7 +160,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
           .replaceAll('href="/report.json"', 'href="report.json"')
           .replaceAll('href="/"', 'href="./"');
     }
-    if (file.endsWith('.css')) text += bannerCss;
+    if (file.endsWith('.css')) text += bannerCss + readerContextCss;
     if (file.endsWith('.js') && file !== source.recordedDataFile)
       text = text
         .replaceAll('intent-recovery.report.language', 'minjae.portfolio.language')
@@ -226,6 +228,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
       'shared persisted language preference',
       'Back/Forward preference restoration with report state preserved',
       'recorded-run banner with cool-toned presentation',
+      'standalone bilingual scenario, term definitions and reading guide; original evidence unchanged',
       ...(source.id === 'change' ? ['saved-report load failure copy'] : []),
       ...(source.id === 'cancellation'
         ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology', 'higher-contrast focus and chart series with unchanged data']
