@@ -4,31 +4,33 @@
 
 I’m Minjae Lee, a software engineer with 7+ years in booking, ordering and payments. I work across React and TypeScript frontends, GraphQL API servers built with Apollo Federation, and AI-assisted developer tools and automation.
 
-[**Explore the portfolio · 한국어 / English →**](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/)
+[**Explore the portfolio · 한국어 / English →**](https://minjae-lee-kr.github.io/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/)
 
 ### 01 / Intent · Recovery
 
 **No response. Is it safe to reserve again?**
 
-Recover the outcome of a reservation after its HTTP response is lost. Then examine where retrying with the same key stops preventing duplicate effects: when the receiving system’s deduplication record expires.
+Recover the result of a request after losing its response. A separate experiment examines retries after the receiver deletes its deduplication record.
 
-[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/)
+[Read the note](https://minjae-lee-kr.github.io/notes/retention-boundary/) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab)
+
+[Base recovery recording](https://minjae-lee-kr.github.io/evidence/intent/) · [Retention experiment recording](https://minjae-lee-kr.github.io/notes/retention-boundary/#records)
 
 ### 02 / Verified Change
 
 **The code passed. Who set the rules?**
 
-A scripted candidate makes its compiler check pass by changing the check. Compare that result with a fixed policy, then bind approval to the exact Git candidate and verification policy. The experiment calls no LLM.
+A scripted patch disables type checking through its configuration. Compare it with fixed checker options, then bind approval to the checked commit and policy. No LLM is called.
 
-[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/) · [Source](https://github.com/minjae-lee-kr/verified-change-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/)
+[Read the note](https://minjae-lee-kr.github.io/notes/verified-change/) · [Source](https://github.com/minjae-lee-kr/verified-change-lab) · [Recorded run](https://minjae-lee-kr.github.io/evidence/change/)
 
 ### 03 / Cancellation Debt
 
-**The request timed out. Why is the work still running?**
+**After a timeout, when should the permit be released?**
 
-Track the work that remains after a GraphQL gateway stops waiting. Four cancellation policies expose the gap between returning a permit and freeing the capacity it represents.
+Releasing a permit before its work ends can exceed the execution limit. Four policies compare cancellation, permit lifetime and rejection of later attempts.
 
-[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/cancellation-debt/) · [Source](https://github.com/minjae-lee-kr/federated-catalog-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/cancellation/)
+[Read the note](https://minjae-lee-kr.github.io/notes/cancellation-debt/) · [Source](https://github.com/minjae-lee-kr/federated-catalog-lab) · [Recorded run](https://minjae-lee-kr.github.io/evidence/cancellation/)
 
 Also: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards), a tool for telling “nothing found” from “nothing checked.”
 

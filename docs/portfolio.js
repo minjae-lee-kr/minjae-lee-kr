@@ -41,6 +41,9 @@ const copy = {
       "Independent personal experiments with synthetic data. No employer code, internal architecture or production results.",
     source: "Source",
     report: "Recorded run",
+    baseReport: "Base recovery recording",
+    retentionReport: "Retention experiment recording",
+    baseRevision: "Base recording source",
     historyNote: "Observed history",
     evidence: "Recorded evidence",
     revision: "Recording source",
@@ -49,7 +52,7 @@ const copy = {
         category: "COMMERCE / RECOVERY",
         question: "No response. Is it safe to reserve again?",
         description:
-          "A lost HTTP response leaves the screen uncertain. Follow the same intent across recovery, then see what changes when another system forgets the retry key.",
+          "Recover the result of a request after losing its response. A separate experiment examines retries after the receiver deletes its deduplication record.",
         cta: "Read the experiment",
         tags: ["React + TypeScript", "HTTP + SQLite", "Crash recovery"],
       },
@@ -63,9 +66,9 @@ const copy = {
       },
       cancellation: {
         category: "GRAPHQL / EXECUTION",
-        question: "The request timed out. Why is the work still running?",
+        question: "After a timeout, when should the permit be released?",
         description:
-          "The gateway stops waiting. Four policies reveal what happens to the work—and the capacity it still occupies.",
+          "Releasing a permit before its work ends can exceed the execution limit. Four policies compare cancellation, permit lifetime and rejection of later attempts.",
         cta: "Read the experiment",
         tags: ["Apollo Federation", "AbortSignal", "Admission control"],
       },
@@ -112,6 +115,9 @@ const copy = {
       "가상 데이터를 쓰는 독립적인 개인 실험입니다. 회사 코드·내부 설계·실서비스 성과를 재현하지 않습니다.",
     source: "소스 코드",
     report: "실행 기록",
+    baseReport: "기본 복구 실험 기록",
+    retentionReport: "보존 기간 실험 기록",
+    baseRevision: "기본 복구 기록의 소스",
     historyNote: "관측 기록 탐색",
     evidence: "실행 기록과 근거",
     revision: "기록 당시 소스",
@@ -120,7 +126,7 @@ const copy = {
         category: "커머스 / 복구",
         question: "응답을 못 받은 예약, 다시 요청해도 될까?",
         description:
-          "응답이 끊기면 예약 성공과 실패를 구분하기 어렵습니다. 기존 요청의 결과를 복구하고, 서버가 중복 방지 기록을 삭제한 뒤에는 무엇이 달라지는지 확인했습니다.",
+          "응답을 못 받은 요청의 결과를 복구합니다. 별도 실험에서는 중복 방지 기록이 삭제된 뒤 같은 키로 재시도할 때의 문제를 확인했습니다.",
         cta: "실험 내용 읽기",
         tags: ["React + TypeScript", "HTTP + SQLite", "프로세스 종료 후 복구"],
       },
@@ -134,9 +140,9 @@ const copy = {
       },
       cancellation: {
         category: "GRAPHQL / 실행 제어",
-        question: "타임아웃이 났는데, 서버 작업은 왜 계속될까?",
+        question: "타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?",
         description:
-          "게이트웨이가 기다리기를 멈춰도 서버 작업은 계속될 수 있습니다. 네 가지 취소 정책에서 남은 작업과 실행 슬롯이 어떻게 처리되는지 비교했습니다.",
+          "작업이 끝나기 전에 슬롯을 반환하면 실제 작업 수가 한도를 넘을 수 있습니다. 네 가지 정책으로 취소와 슬롯 반환 시점, 뒤따르는 요청의 거절을 비교했습니다.",
         cta: "실험 내용 읽기",
         tags: ["Apollo Federation", "AbortSignal", "진입 제어"],
       },
@@ -224,10 +230,17 @@ function renderProjects(t) {
       const summary = element("summary", "", t.evidence);
       summary.setAttribute("aria-label", project.title + " — " + t.evidence);
       const evidenceLinks = element("div", "evidence-links");
-      const report = element("a", "", t.report + " →");
+      const reportLabel = project.id === "intent" ? t.baseReport : t.report;
+      const report = element("a", "", reportLabel + " →");
       report.href = project.url;
-      report.setAttribute("aria-label", project.title + " — " + t.report);
+      report.setAttribute("aria-label", project.title + " — " + reportLabel);
       evidenceLinks.append(report);
+      if (project.id === "intent") {
+        const retention = element("a", "", t.retentionReport + " →");
+        retention.href = project.note + "#records";
+        retention.setAttribute("aria-label", project.title + " — " + t.retentionReport);
+        evidenceLinks.append(retention);
+      }
       if (project.history) {
         const history = element("a", "", t.historyNote + " →");
         history.href = project.history;
@@ -237,7 +250,7 @@ function renderProjects(t) {
         element(
           "span",
           "source-revision",
-          t.revision + " · " + project.revision,
+          (project.id === "intent" ? t.baseRevision : t.revision) + " · " + project.revision,
         ),
       );
       details.append(summary, evidenceLinks);

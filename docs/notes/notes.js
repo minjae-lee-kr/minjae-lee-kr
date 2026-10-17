@@ -83,6 +83,8 @@
     if (announce)
       document.querySelector("#language-status").textContent =
         next === "ko" ? "한국어로 표시합니다." : "The note is now in English.";
+    else if (changed)
+      document.querySelector("#language-status").textContent = "";
   };
   for (const button of document.querySelectorAll("[data-language]"))
     button.addEventListener("click", () => {

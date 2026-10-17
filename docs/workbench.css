@@ -601,3 +601,34 @@
     transition: none !important;
   }
 }
+@media (forced-colors: active) {
+  .wb-tabs::after {
+    display: none;
+  }
+  .wb-tab[aria-selected="true"] {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+  .wb-work-track {
+    outline: 1px solid CanvasText;
+  }
+  .wb-wait-track::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 33.333%;
+    border: 1px solid CanvasText;
+  }
+  /* Preserve the plotted shapes using the reader's system palette. Leave
+     text and native controls under the browser's forced-color handling. */
+  .wb-bar,
+  .wb-cursor,
+  .wb-cursor::before {
+    forced-color-adjust: none;
+    background: CanvasText;
+  }
+  .wb-work-track .wb-bar {
+    background: Highlight;
+  }
+}

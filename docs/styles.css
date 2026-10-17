@@ -169,6 +169,8 @@ nav a:hover::after {
 }
 .languages button[aria-pressed="true"] {
   color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
 .hero {
   padding-top: 64px;

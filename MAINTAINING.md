@@ -37,6 +37,6 @@ Do not format bundled files after import. Update source copy or the bundler, reg
 
 ## Scope and publication
 
-The three reports use synthetic fixtures and real local I/O. Their source repositories are public under `github.com/minjae-lee-kr`. The portfolio is public at `https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/`. Add or change publication links only after their destinations exist. Hosting configuration belongs to the separate deployment checkout, not this source hub.
+The three reports use synthetic fixtures and real local I/O. Their source repositories are public under `github.com/minjae-lee-kr`. The portfolio is public at `https://minjae-lee-kr.github.io/`. Add or change publication links only after their destinations exist. Hosting configuration belongs to the separate deployment checkout, not this source hub.
 
 No employer implementation, private career records, absolute local paths or credentials belong in this repository. The importer checks common path and credential markers; that scan is a guard against accidental inclusion, not a complete privacy or security audit.
