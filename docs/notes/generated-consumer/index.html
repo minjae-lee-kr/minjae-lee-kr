@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>쿼리는 유효한데, 컴파일은 왜 실패할까? — Minjae Lee</title>
+  <meta name="description" content="쿼리와 소비자 코드는 그대로 두고 name의 non-null 보장을 바꿨습니다. 타입을 다시 생성한 결과와 이전 타입으로 통과한 결과를 비교합니다." />
+  <link rel="canonical" href="https://minjae-lee-kr.github.io/notes/generated-consumer/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Minjae Lee — Engineering Notes" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:locale:alternate" content="en_US" />
+  <meta property="og:title" content="쿼리는 유효한데, 컴파일은 왜 실패할까? — Minjae Lee" />
+  <meta property="og:description" content="쿼리와 소비자 코드는 그대로 두고 name의 non-null 보장을 바꿨습니다. 타입을 다시 생성한 결과와 이전 타입으로 통과한 결과를 비교합니다." />
+  <meta property="og:url" content="https://minjae-lee-kr.github.io/notes/generated-consumer/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="쿼리는 유효한데, 컴파일은 왜 실패할까? — Minjae Lee" />
+  <meta name="twitter:description" content="쿼리와 소비자 코드는 그대로 두고 name의 non-null 보장을 바꿨습니다. 타입을 다시 생성한 결과와 이전 타입으로 통과한 결과를 비교합니다." />
+  <link rel="icon" href="../../assets/mark.svg" type="image/svg+xml" />
+  <link rel="preload" href="../../assets/fonts/SUIT-Variable.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../notes.css" />
+  <link rel="stylesheet" href="consumer.css" />
+  <script src="../notes.js" defer></script>
+</head>
+<body data-title-ko="쿼리는 유효한데, 컴파일은 왜 실패할까?" data-title-en="The query validates. Why does compilation fail?" data-description-ko="쿼리와 소비자 코드는 그대로 두고 name의 non-null 보장을 바꿨습니다. 타입을 다시 생성한 결과와 이전 타입으로 통과한 결과를 비교합니다." data-description-en="Keep the query and consumer fixed, then weaken the non-null guarantee. Compare regenerated types with a passing stale-type control.">
+  <a class="skip" href="#note"><span data-lang="ko" lang="ko">본문으로 이동</span><span data-lang="en" lang="en" hidden>Skip to the note</span></a>
+  <header class="site-header"><div class="header-inner">
+    <a class="wordmark" href="../../" aria-label="Minjae Lee 포트폴리오 홈" data-label-ko="Minjae Lee 포트폴리오 홈" data-label-en="Minjae Lee portfolio home">M<span>·</span>L</a>
+    <a class="back-link" href="../../"><span data-lang="ko" lang="ko">작업 모음으로</span><span data-lang="en" lang="en" hidden>Back to selected work</span></a>
+    <div class="languages" role="group" aria-label="언어 선택" data-label-ko="언어 선택" data-label-en="Language">
+      <button type="button" data-language="ko" lang="ko" aria-pressed="true">한국어</button><button type="button" data-language="en" lang="en" aria-pressed="false">English</button>
+    </div>
+  </div></header>
+  <main id="note" class="reading" tabindex="-1"><article>
+    <header id="opening" data-reading-section>
+      <p class="eyebrow">GRAPHQL / GENERATED CONSUMERS</p>
+      <h1><span data-lang="ko" lang="ko">쿼리는 유효한데, 컴파일은 왜 실패할까?</span><span data-lang="en" lang="en" hidden>The query validates. Why does compilation fail?</span></h1>
+      <p data-lang="ko" lang="ko" class="lead">두 쿼리는 여전히 유효했습니다. 타입을 다시 생성하자, 수정하지 않은 소비자 코드에서 오류가 났습니다.</p><p data-lang="en" lang="en" hidden class="lead">Both queries still validated. After regenerating their types, unchanged consumer code failed to compile.</p>
+      <div class="byline"><span>Minjae Lee</span><span data-lang="ko" lang="ko">개인 엔지니어링 실험</span><span data-lang="en" lang="en" hidden>Independent engineering experiment</span><span data-lang="ko" lang="ko">2026년 10월 17일 실행 기록</span><span data-lang="en" lang="en" hidden>Recorded 17 October 2026</span></div>
+    </header>
+    <nav class="contents" aria-label="이 글의 내용" data-label-ko="이 글의 내용" data-label-en="In this note">
+      <a href="#same-code"><span data-lang="ko" lang="ko">같은 코드, 다른 타입</span><span data-lang="en" lang="en" hidden>Same code, changed types</span></a>
+      <a href="#stale"><span data-lang="ko" lang="ko">통과한 이전 타입</span><span data-lang="en" lang="en" hidden>Passing stale types</span></a>
+      <a href="#evidence"><span data-lang="ko" lang="ko">근거와 한계</span><span data-lang="en" lang="en" hidden>Evidence and limits</span></a>
+    </nav>
+    <noscript><p class="publication">현재 한국어 본문입니다. 언어 전환에는 JavaScript가 필요합니다. / Language switching requires JavaScript.</p></noscript>
+
+    <section id="same-code" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">01</span><span data-lang="ko" lang="ko">코드는 그대로, 타입만 다시 생성</span><span data-lang="en" lang="en" hidden>Same consumer. Regenerated types.</span></h2>
+      <div class="prose">
+        <p data-lang="ko" lang="ko">개인 Apollo Federation 실험에서 <code>Product.name: String!</code>을 <code>String</code>으로 바꿨습니다. <code>CatalogOnly</code>와 <code>CatalogCards</code>는 모두 검증을 통과했습니다. null을 허용해도 필드를 조회하는 것 자체는 유효하기 때문입니다.</p><p data-lang="en" lang="en" hidden>In a personal Apollo Federation lab, I changed <code>Product.name: String!</code> to <code>String</code>. Both <code>CatalogOnly</code> and <code>CatalogCards</code> still validated: allowing null does not make selecting the field invalid.</p>
+      </div>
+      <p class="code-label"><a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/strict-name.ts">strict-name.ts</a> · <span data-lang="ko" lang="ko">고정한 소비자 파일</span><span data-lang="en" lang="en" hidden>Fixed consumer file</span></p>
+      <pre tabindex="0" aria-label="고정한 TypeScript 소비자 코드" data-label-ko="고정한 TypeScript 소비자 코드" data-label-en="Fixed TypeScript consumer source"><code data-source="strict-name.ts">import type { CatalogOnlyQuery } from './CatalogOnly.generated.js';
+
+type Product = NonNullable&lt;CatalogOnlyQuery['products'][number]&gt;;
+
+export function productHeading(product: Product): string {
+  return product.name.toUpperCase();
+}
+</code></pre>
+      <div class="comparison-wrap" role="region" tabindex="0" aria-label="스키마와 생성 타입에 따른 검증 결과" data-label-ko="스키마와 생성 타입에 따른 검증 결과" data-label-en="Validation results by schema and generated types">
+        <table class="comparison">
+          <caption><span data-lang="ko" lang="ko">전체 8개 조건 중 세 조건입니다. 위 코드는 수정하지 않았습니다.</span><span data-lang="en" lang="en" hidden>Three of eight recorded cases. The consumer above is unchanged.</span></caption>
+          <thead><tr><th scope="col"><span data-lang="ko" lang="ko">스키마 / 사용한 타입</span><span data-lang="en" lang="en" hidden>Schema / types used</span></th><th scope="col"><span data-lang="ko" lang="ko">쿼리 검증</span><span data-lang="en" lang="en" hidden>Query validation</span></th><th scope="col"><span data-lang="ko" lang="ko">소비자 컴파일</span><span data-lang="en" lang="en" hidden>Consumer compilation</span></th></tr></thead>
+          <tbody>
+            <tr data-case="unchanged"><th scope="row"><code>name: String!</code><small><span data-lang="ko" lang="ko">새로 생성</span><span data-lang="en" lang="en" hidden>Regenerated</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><span data-lang="ko" lang="ko">성공</span><span data-lang="en" lang="en" hidden>Pass</span></td></tr>
+            <tr data-case="weaken-name-nullability"><th scope="row"><code>name: String</code><small><span data-lang="ko" lang="ko">새로 생성</span><span data-lang="en" lang="en" hidden>Regenerated</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><strong>TS18047</strong></td></tr>
+            <tr data-case="weaken-name-nullability-stale-types"><th scope="row"><code>name: String</code><small><span data-lang="ko" lang="ko">이전 타입 재사용</span><span data-lang="en" lang="en" hidden>Stale baseline types</span></small></th><td><span data-lang="ko" lang="ko">유효</span><span data-lang="en" lang="en" hidden>Valid</span></td><td><span data-lang="ko" lang="ko">성공 — 변경 미반영</span><span data-lang="en" lang="en" hidden>Pass — change not covered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p data-lang="ko" lang="ko">공식 GraphQL Code Generator로 다시 생성한 <code>name</code>의 타입은 <code>string | null</code>입니다. strict 설정의 실제 TypeScript 컴파일러는 다음 진단을 냈습니다.</p><p data-lang="en" lang="en" hidden>Official GraphQL Code Generator now emits <code>string | null</code> for <code>name</code>. The real TypeScript compiler, with strict settings, reports:</p>
+      <pre class="diagnostic" tabindex="0" data-report-case="weaken-name-nullability" data-report-consumer="strict-name"><code>strict-name.ts(6,10): error TS18047: 'product.name' is possibly 'null'.</code></pre>
+      <div class="prose"><p data-lang="ko" lang="ko">별도 소비자에서 <code>(product.name ?? 'Unnamed product').toUpperCase()</code>로 null을 처리하면 컴파일됩니다. 이는 변경된 타입을 처리한다는 근거입니다. 대체 문구가 제품에 적절한지는 별도 판단입니다.</p><p data-lang="en" lang="en" hidden>A separate consumer using <code>(product.name ?? 'Unnamed product').toUpperCase()</code> compiles. It handles the changed type; whether that fallback is right for the product is a separate decision.</p></div>
+    </section>
+
+    <section id="stale" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">02</span><span data-lang="ko" lang="ko">이전 타입으로 통과하면, 무엇을 확인한 걸까?</span><span data-lang="en" lang="en" hidden>What did the passing stale-type check cover?</span></h2>
+      <div class="prose"><p data-lang="ko" lang="ko">타입을 다시 생성하지 않으면 같은 코드가 통과합니다. 컴파일러가 받은 타입에는 여전히 non-null 보장이 남아 있기 때문입니다. 보고서에서 후보 스키마와 타입 생성에 사용한 스키마를 대조하면 차이가 드러납니다.</p><p data-lang="en" lang="en" hidden>Without regeneration, the same code compiles. The supplied types still carry the old non-null guarantee. Comparing the candidate schema with the schema used for generation exposes the gap.</p></div>
+      <figure class="hash-figure">
+        <div class="hash-pair">
+          <div><p><span data-lang="ko" lang="ko">타입 생성에 사용한 스키마</span><span data-lang="en" lang="en" hidden>Schema used to generate types</span></p><code data-hash="generatedFromSchemaSha256" data-full-hash="5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f">5dac235c739c…</code><span><span data-lang="ko" lang="ko">변경 전 / String!</span><span data-lang="en" lang="en" hidden>Baseline / String!</span></span></div>
+          <span class="hash-divider" aria-hidden="true">≠</span>
+          <div><p><span data-lang="ko" lang="ko">검토 중인 후보 스키마</span><span data-lang="en" lang="en" hidden>Candidate schema under review</span></p><code data-hash="candidateSchemaSha256" data-full-hash="040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c">040ea438a171…</code><span><span data-lang="ko" lang="ko">변경 후 / String</span><span data-lang="en" lang="en" hidden>Changed / String</span></span></div>
+        </div>
+        <figcaption><span data-lang="ko" lang="ko">이전 타입 대조군의 실제 SHA-256 앞 12자리입니다. 전체 값은 아래 실행 근거에 있습니다.</span><span data-lang="en" lang="en" hidden>First 12 characters of the actual SHA-256 values in the stale-type control. Full values appear in the evidence below.</span></figcaption>
+      </figure>
+      <p class="takeaway"><span data-lang="ko" lang="ko">컴파일 성공은 검사에 넣은 타입에 대한 결과입니다. 새 스키마가 타입에 반영됐는지도 확인해야 합니다.</span><span data-lang="en" lang="en" hidden>A passing compile covers the types you supplied. Check that those types represent the candidate schema.</span></p>
+      <div class="prose"><p data-lang="ko" lang="ko">enum 확장에서도 구분은 같습니다. <code>PREORDER</code>를 추가해도 쿼리는 유효하지만, <code>IN_STOCK</code>과 <code>SOLD_OUT</code>만 처리하고 <code>assertNever</code>로 누락을 검사하는 소비자는 새 타입으로 컴파일되지 않습니다.</p><p data-lang="en" lang="en" hidden>The same distinction appears with enum expansion. Adding <code>PREORDER</code> keeps the query valid, but a consumer that handles only <code>IN_STOCK</code> and <code>SOLD_OUT</code> and checks the remainder with <code>assertNever</code> no longer compiles with regenerated types.</p></div>
+      <p class="code-label"><a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/fixtures/consumers/exhaustive-status.ts">exhaustive-status.ts</a> · <span data-lang="ko" lang="ko">실제 컴파일러 진단</span><span data-lang="en" lang="en" hidden>Actual compiler diagnostic</span></p>
+      <pre class="diagnostic" tabindex="0" data-report-case="add-stock-enum-value" data-report-consumer="exhaustive-status"><code>exhaustive-status.ts(14,33): error TS2345: Argument of type '&quot;PREORDER&quot;' is not assignable to parameter of type 'never'.</code></pre>
+      <div class="prose"><p data-lang="ko" lang="ko">따라서 쿼리 검증은 “이 스키마에서 요청할 수 있는가”를, 소비자 컴파일은 “이 타입을 기존 코드가 처리하는가”를 확인합니다. 둘 다 런타임 동작 전체를 보장하지는 않습니다.</p><p data-lang="en" lang="en" hidden>Query validation checks whether the operation is valid against the schema. Consumer compilation checks whether existing code accepts the supplied types. Neither establishes complete runtime behavior.</p></div>
+    </section>
+
+    <section id="evidence" class="reading-section" data-reading-section tabindex="-1">
+      <h2><span class="section-number">03</span><span data-lang="ko" lang="ko">직접 확인할 수 있는 근거</span><span data-lang="en" lang="en" hidden>Evidence you can inspect</span></h2>
+      <div class="prose"><p data-lang="ko" lang="ko">전체 실행은 <strong>8개 조건, 실제 컴파일 28회</strong>이며, 이 글은 그중 네 조건을 골랐습니다. 코드·쿼리·스키마는 개인 실험용입니다. 리졸버와 소비자 함수는 실행하지 않았으며, 회사나 실서비스의 성과를 주장하지 않습니다.</p><p data-lang="en" lang="en" hidden>The full run contains <strong>8 cases and 28 actual compilations</strong>; this note selects four cases. Code, queries and schemas are synthetic personal fixtures. Resolvers and consumer functions were not executed; these are not employer or production results.</p></div>
+      <div class="evidence-actions">
+        <a href="report.json"><span data-lang="ko" lang="ko">실행 보고서 JSON ↗</span><span data-lang="en" lang="en" hidden>Recorded report JSON ↗</span></a>
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/docs/consumer-impact.md" data-lang="en" lang="en" hidden data-focus-key="reproduce">Reproduce the experiment ↗</a>
+        <a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/docs/consumer-impact.ko.md" data-lang="ko" lang="ko" data-focus-key="reproduce">재현 방법과 전체 비교 ↗</a>
+      </div>
+      <details>
+        <summary><span data-lang="ko" lang="ko">전체 해시·도구·추가 대조군</span><span data-lang="en" lang="en" hidden>Full hashes, tools and other controls</span></summary>
+        <dl>
+          <dt><span data-lang="ko" lang="ko">소스 커밋</span><span data-lang="en" lang="en" hidden>Source revision</span></dt><dd><a href="https://github.com/minjae-lee-kr/federated-catalog-lab/blob/a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb/src/consumer-impact.ts"><code>a63ef7b6a00e02d96c248fd3f06cd0db6c0d4aeb</code></a></dd>
+          <dt>Report SHA-256</dt><dd><code>454db54e059216006aec76c0ab35b4e75ee244a7b06824205d4d9018d1c0a39a</code></dd>
+          <dt>Generated from</dt><dd><code>5dac235c739cda409e68e44b5819743753870c8d222132bae321860580a67d3f</code></dd>
+          <dt>Candidate schema</dt><dd><code>040ea438a17142e42e1a949a2da51afdda3ae6e8ee32ab275d4fd2b33cc2872c</code></dd>
+          <dt>Fixed consumer</dt><dd><code>6ec69eeb88a957fd6a045251cb528f22c7ed5129c85b7a690c00e7a699837411</code></dd>
+          <dt><span data-lang="ko" lang="ko">도구 버전</span><span data-lang="en" lang="en" hidden>Tool versions</span></dt><dd>Codegen core 6.2.2 · TypeScript operations 6.1.10 · TypeScript 7.0.2 · GraphQL 16.14.2</dd>
+        </dl>
+        <div class="prose details-prose">
+          <p data-lang="ko" lang="ko">조회하지 않는 필드 추가는 생성 타입을 바꾸지 않았습니다. <code>futureProofEnums: true</code>를 켜면 catch-all 타입이 추가되어 기존 enum 소비자가 스키마 변경 전부터 실패했습니다. 이는 생성 정책의 차이이며, 응답을 변환하는 런타임 디코더는 아닙니다.</p><p data-lang="en" lang="en" hidden>An unselected additive field left generated types unchanged. With <code>futureProofEnums: true</code>, a catch-all type made the closed enum consumer fail even before a schema change. That is a generator-policy difference, not a runtime response decoder.</p>
+          <p data-lang="ko" lang="ko">예제의 <code>NonNullable</code>은 제품이나 재고 정보 자체가 없는 경우를 호출부에서 처리한다고 전제합니다. 도구 실패나 예상 밖의 진단은 실험 실패로 처리합니다. 의도한 타입 오류를 관찰했을 때의 종료 코드 0은 배포 승인을 뜻하지 않습니다.</p><p data-lang="en" lang="en" hidden>The fixtures use <code>NonNullable</code>, leaving absent product or availability handling to the caller. Tool failures and unexpected diagnostics fail the experiment. Exit 0 after observing deliberate type errors is not deployment approval.</p>
+          <p><a href="recording.json"><span data-lang="ko" lang="ko">파일 출처와 해시 기록 ↗</span><span data-lang="en" lang="en" hidden>File provenance and hashes ↗</span></a></p>
+        </div>
+      </details>
+      <p class="sources"><span data-lang="ko" lang="ko">공식 자료</span><span data-lang="en" lang="en" hidden>Primary references</span>: <a href="https://www.graphql.org/learn/validation/">GraphQL validation</a> · <a href="https://the-guild.dev/graphql/codegen/docs/advanced/programmatic-usage">Codegen API</a> · <a href="https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-operations">Operation types</a> · <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html#exhaustiveness-checking">TypeScript exhaustiveness</a></p>
+    </section>
+    <nav class="next-note" aria-label="관련 글" data-label-ko="관련 글" data-label-en="Related note"><span><span data-lang="ko" lang="ko">같은 Federation 실험의 다른 경계</span><span data-lang="en" lang="en" hidden>Another boundary in the same Federation lab</span></span><a href="../cancellation-debt/"><span data-lang="ko" lang="ko">타임아웃 뒤의 실제 작업 →</span><span data-lang="en" lang="en" hidden>Work that outlives a timeout →</span></a></nav>
+  </article></main>
+  <footer class="note-footer"><span>Minjae Lee · Engineering Notes</span><a href="../../"><span data-lang="ko" lang="ko">작업 모음으로</span><span data-lang="en" lang="en" hidden>Back to selected work</span></a></footer>
+  <div id="language-status" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
