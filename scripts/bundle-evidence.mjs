@@ -3,12 +3,15 @@ import { createHash } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import { validateRecording } from './recording-contract.mjs';
 import { adaptCancellationDisplay } from './cancellation-display.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const parent = path.dirname(root);
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
+const exec = promisify(execFile);
 const sources = [
   {
     id: 'intent',
@@ -45,7 +48,7 @@ assert.ok(
   'Usage: node scripts/bundle-evidence.mjs [intent|change|cancellation]',
 );
 const banner = `<aside class="recorded-banner"><a href="../../"><span class="recorded-ko">← 포트폴리오</span><span class="recorded-en">← Portfolio</span></a><p><span class="recorded-ko">기록된 로컬 실행 · 읽기 전용 · 현재 시스템을 조회하지 않습니다.</span><span class="recorded-en">Recorded local run · read-only · no live system connection.</span></p><a href="recording.json"><span class="recorded-ko">기록 출처</span><span class="recorded-en">Recording source</span></a></aside>`;
-const bannerCss = `\n.recorded-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(20px,calc((100% - 1100px)/2));background:#e6ecdf;border-bottom:1px solid #c9d4c3;color:#254b41;font:12px/1.6 system-ui,sans-serif}.recorded-banner a{color:inherit;font-weight:600;white-space:nowrap}.recorded-banner p{margin:0}html[lang=ko] .recorded-en,html:not([lang=ko]) .recorded-ko{display:none}@media(max-width:680px){.recorded-banner{flex-wrap:wrap;gap:8px 16px}.recorded-banner p{order:3;flex-basis:100%}}\n`;
+const bannerCss = `\n.recorded-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(20px,calc((100% - 1100px)/2));background:#eaf1fc;border-bottom:1px solid #cddcf2;color:#294b7a;font:12px/1.6 system-ui,sans-serif}.recorded-banner a{color:inherit;font-weight:600;white-space:nowrap}.recorded-banner p{margin:0}html[lang=ko] .recorded-en,html:not([lang=ko]) .recorded-ko{display:none}@media(max-width:680px){.recorded-banner{flex-wrap:wrap;gap:8px 16px}.recorded-banner p{order:3;flex-basis:100%}}\n`;
 const restorePreference = (variable, render) => `
 // Integration only: restore the shared preference without resetting evidence state.
 window.addEventListener('pageshow', () => {
@@ -118,7 +121,17 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
     const input = source.report
       ? path.join(repository, source.report, file)
       : path.join(repository, file === 'report.json' ? 'dist' : 'web', file);
-    const original = await readFile(input);
+    // A later source edit must not silently relabel the recorded renderer.
+    // Its exact blob hash is checked against the captured manifest below.
+    const original = source.id === 'change' && file !== 'report.json'
+      ? (await exec('git', ['-C', repository, 'show', `${source.revision}:web/${file}`], {
+          encoding: 'buffer',
+          windowsHide: true,
+          timeout: 10_000,
+          maxBuffer: 2_000_000,
+          env: Object.fromEntries(Object.entries(process.env).filter(([name]) => !/^GIT_/i.test(name))),
+        })).stdout
+      : await readFile(input);
     if (upstream && file !== 'export.json') {
       assert.equal(
         hash(original),
@@ -212,7 +225,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
       'relative asset URLs',
       'shared persisted language preference',
       'Back/Forward preference restoration with report state preserved',
-      'recorded-run banner',
+      'recorded-run banner with cool-toned presentation',
       ...(source.id === 'change' ? ['saved-report load failure copy'] : []),
       ...(source.id === 'cancellation'
         ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology']
