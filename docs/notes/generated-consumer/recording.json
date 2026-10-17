@@ -15,7 +15,8 @@
     "unchanged",
     "weaken-name-nullability",
     "weaken-name-nullability-stale-types",
-    "add-stock-enum-value"
+    "unchanged-future-proof-enums",
+    "add-optional-field"
   ],
   "reportPreservedByteForByte": true,
   "limits": [
