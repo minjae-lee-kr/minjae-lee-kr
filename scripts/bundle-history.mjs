@@ -4,6 +4,7 @@ import { lstat, mkdir, readFile, realpath, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { withReaderContext, readerContextCss } from './reader-context.mjs';
+import { adaptEvidenceLanguage } from './evidence-language.mjs';
 
 // A fixed, reviewed recording. Updating these pins requires reviewing a new run.
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -71,8 +72,8 @@ assert.equal(recording.gitDirty, false);
 assert.equal(recording.renderer.git.head, revision);
 assert.equal(recording.renderer.git.dirty, false);
 
-// The report already shares the portfolio locale and preserves its own view state.
-// Add navigation and a link to display-file provenance. Raw evidence stays exact.
+// Adapt navigation and URL language precedence, keeping the report's own view state.
+// Raw evidence and the original export manifest stay exact.
 const index = files.get('index.html').toString('utf8');
 assert.equal(index.split('<body>').length, 2);
 files.set(
@@ -100,6 +101,7 @@ files.set(
   ),
 );
 files.set('upstream-assets.json', upstreamBytes);
+files.set('report.js', Buffer.from(adaptEvidenceLanguage(files.get('report.js').toString('utf8'), 'history')));
 const manifest = {
   kind: 'portfolio-history-bundle',
   repository: 'intent-recovery-lab',
@@ -110,6 +112,7 @@ const manifest = {
   displayAdaptations: [
     'Portfolio return navigation and display-file provenance link in index.html; navigation styling in report.css',
     'Standalone bilingual scenario, ledger definition and control-method explanation; original observations unchanged',
+    'Explicit URL language before shared preference; language controls update the URL and reading links; restore without rendering when unchanged',
   ],
   note: 'The upstream manifest identifies original export bytes. This manifest identifies the portfolio files. Both are unsigned provenance, not attestation.',
   files: [...files].map(([path, bytes]) => ({ path, sha256: hash(bytes) })),

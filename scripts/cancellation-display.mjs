@@ -27,6 +27,8 @@ export function adaptCancellationDisplay(file, text) {
       '#chart:focus-visible{outline:3px solid #4478e4;outline-offset:4px}\n';
   }
   if (file !== 'debt.js') return text;
+  text = replaceOnce(text, "language:'Switch to Korean'", "language:'한국어 — Switch to Korean'");
+  text = replaceOnce(text, "language:'영어로 전환'", "language:'English — 영어로 전환'");
   text = replaceOnce(
     text,
     "scrollHint:'On narrow screens, focus the table and scroll horizontally to see every column.',",

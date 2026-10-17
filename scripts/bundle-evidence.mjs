@@ -8,6 +8,7 @@ import { promisify } from 'node:util';
 import { validateRecording } from './recording-contract.mjs';
 import { adaptCancellationDisplay } from './cancellation-display.mjs';
 import { withReaderContext, readerContextCss } from './reader-context.mjs';
+import { adaptEvidenceLanguage } from './evidence-language.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const parent = path.dirname(root);
@@ -50,18 +51,6 @@ assert.ok(
 );
 const banner = `<aside class="recorded-banner"><a href="../../"><span class="recorded-ko">← 포트폴리오</span><span class="recorded-en">← Portfolio</span></a><p><span class="recorded-ko">기록된 로컬 실행 · 읽기 전용 · 현재 시스템을 조회하지 않습니다.</span><span class="recorded-en">Recorded local run · read-only · no live system connection.</span></p><a href="recording.json"><span class="recorded-ko">기록 출처</span><span class="recorded-en">Recording source</span></a></aside>`;
 const bannerCss = `\n.recorded-banner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px max(20px,calc((100% - 1100px)/2));background:#eaf1fc;border-bottom:1px solid #cddcf2;color:#294b7a;font:12px/1.6 system-ui,sans-serif}.recorded-banner a{color:inherit;font-weight:600;white-space:nowrap}.recorded-banner p{margin:0}html[lang=ko] .recorded-en,html:not([lang=ko]) .recorded-ko{display:none}@media(max-width:680px){.recorded-banner{flex-wrap:wrap;gap:8px 16px}.recorded-banner p{order:3;flex-basis:100%}}\n`;
-const restorePreference = (variable, render) => `
-// Integration only: restore the shared preference without resetting evidence state.
-window.addEventListener('pageshow', () => {
-  try {
-    const saved = localStorage.getItem('minjae.portfolio.language');
-    if ((saved === 'ko' || saved === 'en') && saved !== ${variable}) {
-      ${variable} = saved;
-      ${render}();
-    }
-  } catch { /* Keep the current language if storage is unavailable. */ }
-});
-`;
 
 function safeText(text, label) {
   assert.ok(
@@ -150,6 +139,23 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
     }
     let text = original.toString('utf8');
     safeText(text, input);
+    // Display-only accessibility corrections to the frozen renderer. Evidence stays exact.
+    if (source.id === 'change') {
+      if (file === 'index.html') {
+        assert.ok(text.includes(' aria-label="Verified Change Lab home"'));
+        text = text.replace(' aria-label="Verified Change Lab home"', '');
+      }
+      if (file === 'app.js') {
+        const setter = "  document.querySelector('.brand').setAttribute('aria-label', t.home);";
+        assert.ok(text.includes(setter));
+        text = text.replace(setter, '');
+      }
+      if (file === 'style.css') {
+        const rule = 'nav button span:first-child {\n  font-size: 10px;\n  color: #637184;\n}';
+        assert.ok(text.includes(rule));
+        text = text.replace(rule, rule.replace('#637184', '#53657d'));
+      }
+    }
     if (file.endsWith('.html')) {
       text = withReaderContext(text, source.id);
       text = text.replace('<body>', `<body>\n${banner}`);
@@ -168,12 +174,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
         .replaceAll('cancellation-lab-language', 'minjae.portfolio.language')
         .replaceAll("fetch('/report.json')", "fetch('report.json')");
     if (source.id === 'intent' && file === 'report.js') {
-      const closing = '  apply();\n})();';
-      assert.ok(
-        text.includes(closing),
-        'intent: language scope changed; review display adaptation',
-      );
-      text = text.replace(closing, restorePreference('lang', 'apply') + closing);
+      text = adaptEvidenceLanguage(text, source.id);
     }
     if (source.id === 'change' && file === 'app.js') {
       text = text
@@ -185,11 +186,11 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
           'pnpm experiment 실행 후 새로고침하세요.',
           '저장된 실행 기록을 불러오지 못했습니다. 새로고침하거나 포트폴리오로 돌아가세요.',
         );
-      text += restorePreference('language', 'render');
+      text = adaptEvidenceLanguage(text, source.id);
     }
     if (source.id === 'cancellation') {
       text = adaptCancellationDisplay(file, text);
-      if (file === 'debt.js') text += restorePreference('lang', 'translate');
+      if (file === 'debt.js') text = adaptEvidenceLanguage(text, source.id);
     }
     const output = Buffer.from(text);
     safeText(text, `bundled/${file}`);
@@ -225,13 +226,13 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
       : {}),
     displayAdaptations: [
       'relative asset URLs',
-      'shared persisted language preference',
-      'Back/Forward preference restoration with report state preserved',
+      'explicit URL language before shared preference; language controls update the URL and reading links',
+      'Back/Forward language restoration; no render when the language is unchanged',
       'recorded-run banner with cool-toned presentation',
       'standalone bilingual scenario, term definitions and reading guide; original evidence unchanged',
-      ...(source.id === 'change' ? ['saved-report load failure copy'] : []),
+      ...(source.id === 'change' ? ['saved-report load failure copy', 'visible brand name and higher-contrast case numbers'] : []),
       ...(source.id === 'cancellation'
-        ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology', 'higher-contrast focus and chart series with unchanged data']
+        ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology', 'higher-contrast focus and chart series with unchanged data', 'language control name includes its visible label']
         : []),
     ],
     files,

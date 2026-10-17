@@ -155,7 +155,7 @@ test('history bundle keeps recorded data exact and distinguishes navigation adap
     files.set(entry.path, bytes);
   }
   for (const entry of upstream) {
-    const adapted = ['index.html', 'report.css'].includes(entry.name);
+    const adapted = ['index.html', 'report.css', 'report.js'].includes(entry.name);
     assert.equal(hash(files.get(entry.name)) === entry.sha256, !adapted, entry.name);
   }
   assert.equal(hash(files.get('evidence.json')), manifest.evidenceSha256);

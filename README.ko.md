@@ -10,29 +10,37 @@
 
 **응답을 못 받은 예약, 다시 요청해도 될까?**
 
-응답이 끊겨도 예약 결과를 다시 확인하고, 이전 요청의 응답이 현재 화면을 덮지 않도록 합니다. 중복 방지 기록이 삭제된 뒤의 재시도도 별도 실험으로 살펴봤습니다.
+재시도·새로고침 때도 같은 예약 키와 요청 내용을 유지하고, 이전 화면 요청의 늦은 응답은 무시합니다. 별도 보존 기간 실험에서는 기록이 없다는 응답만으로 재시도를 결정할 수 없는 조건을 확인합니다.
 
 [복구 UI의 설계 판단](https://github.com/minjae-lee-kr/intent-recovery-lab/blob/main/docs/design.ko.md) · [소스](https://github.com/minjae-lee-kr/intent-recovery-lab)
 
 [기본 복구 실험 기록](https://minjae-lee-kr.github.io/evidence/intent/) · [보존 기간 실험 기록](https://minjae-lee-kr.github.io/notes/retention-boundary/#records)
 
+[로컬 기록은 같지만 실제 결과는 다른 두 실행 비교하기 →](https://minjae-lee-kr.github.io/research/what-the-client-knows/)
+
 ### 02 / Verified Change
 
 **검사를 통과한 코드, 검사 기준도 바뀌었다면?**
 
-수정 코드가 검사 설정까지 바꿀 수 있다면 통과 결과만으로는 부족합니다. 별도로 정한 기준으로 검증하고, 확인한 커밋과 검사 정책에만 승인이 적용되도록 구성했습니다. LLM을 호출하지 않는 스크립트 실험입니다.
+타입 오류가 남아 있어도 검사를 끄면 컴파일러는 오류 없이 끝납니다. 검사 옵션을 고정하고, 승인·적용 대상을 검사한 커밋과 정책에 묶었습니다. LLM을 호출하지 않는 스크립트 실험입니다.
 
 [해설 읽기](https://minjae-lee-kr.github.io/notes/verified-change/) · [소스](https://github.com/minjae-lee-kr/verified-change-lab) · [실행 기록](https://minjae-lee-kr.github.io/evidence/change/)
+
+후속 실험: [코드를 되돌리면, 승인도 다시 쓸 수 있을까?](https://minjae-lee-kr.github.io/research/approval-memory/) 코드 선택과 승인 사용 기록을 한 상태에 묶고, 되돌릴 때 남는 것을 비교합니다.
 
 ### 03 / Cancellation Debt
 
 **타임아웃 뒤, 실행 슬롯은 언제 반환해야 할까?**
 
-작업이 끝나기 전에 슬롯을 반환하면 실제 작업 수가 한도를 넘을 수 있습니다. 네 가지 정책으로 취소와 슬롯 반환 시점, 뒤따르는 요청의 거절을 비교했습니다.
+타임아웃 때 슬롯을 반환하면 작업이 끝나기 전에 새 작업을 받을 수 있습니다. 네 정책을 비교해, 작업이 끝날 때까지 슬롯을 유지하면 한도를 지키는 대신 뒤의 요청을 거절할 수 있음을 확인했습니다.
 
 [해설 읽기](https://minjae-lee-kr.github.io/notes/cancellation-debt/) · [소스](https://github.com/minjae-lee-kr/federated-catalog-lab) · [실행 기록](https://minjae-lee-kr.github.io/evidence/cancellation/)
 
 같은 실험의 다른 주제: [검사는 통과했지만, 생성 타입은 예전 것이었다](https://minjae-lee-kr.github.io/notes/generated-consumer/)
+
+[재고 조회 하나가 실패했는데, 상품까지 사라졌습니다.](https://minjae-lee-kr.github.io/research/partial-data/) 배치 오류 처리와 null 허용 여부를 바꾼 세 조건의 실제 응답을 비교합니다.
+
+[다음 조회에는 왜 오류가 없을까?](https://minjae-lee-kr.github.io/research/client-cache/) 같은 부분 응답을 Apollo Client에서 조회합니다. 받은 데이터를 남길지, 이전 값을 유지할지, HTTP 요청을 다시 보낼지에 따라 감수할 비용이 달라집니다.
 
 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)도 만들었습니다. “발견한 문제가 없음”과 “검사한 것이 없음”을 구분하는 도구입니다.
 
