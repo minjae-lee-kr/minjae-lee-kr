@@ -44,6 +44,8 @@ From the same lab: [The checks passed. The generated types were stale.](https://
 
 [The error disappeared. The recheck still failed.](https://minjae-lee-kr.github.io/research/react-recheck/?lang=en) Compare the value left on a React screen with the recheck outcome through actual DOM and HTTP observations.
 
+[Does guarding request state also protect the cache?](https://minjae-lee-kr.github.io/research/react-attempts/?lang=en) Compare automatic cache writes with writes accepted only for the current lookup, using controlled response order in a real React component.
+
 Also: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards), a tool for telling “nothing found” from “nothing checked.”
 
 ### Reproduce & inspect

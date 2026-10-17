@@ -44,6 +44,8 @@
 
 [오류는 사라졌는데, 재확인은 실패했습니다.](https://minjae-lee-kr.github.io/research/react-recheck/?lang=ko) React 화면에 남은 값과 재확인 결과를 실제 DOM·HTTP로 구분합니다.
 
+[요청 상태를 보호하면 캐시도 안전할까요?](https://minjae-lee-kr.github.io/research/react-attempts/?lang=ko) 실제 React 컴포넌트에서 응답 순서를 제어하며, 자동 캐시 쓰기와 현재 조회에만 허용한 쓰기를 비교합니다.
+
 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)도 만들었습니다. “발견한 문제가 없음”과 “검사한 것이 없음”을 구분하는 도구입니다.
 
 ### 직접 재현하고 살펴보기
