@@ -228,7 +228,7 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
       'recorded-run banner with cool-toned presentation',
       ...(source.id === 'change' ? ['saved-report load failure copy'] : []),
       ...(source.id === 'cancellation'
-        ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology']
+        ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology', 'higher-contrast focus and chart series with unchanged data']
         : []),
     ],
     files,

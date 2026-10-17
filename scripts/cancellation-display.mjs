@@ -17,9 +17,14 @@ export function adaptCancellationDisplay(file, text) {
     );
   }
   if (file === 'debt.css') {
+    // Keep both the legend key and its series readable against the white plot.
+    for (const [before, after] of [['#7aa5ff', '#4478e4'], ['#dd9a45', '#a86a15'], ['#b7c2d3', '#7b879b']]) {
+      assert.equal(text.split(before).length, 3, 'Cancellation color anchors changed: ' + before);
+      text = text.replaceAll(before, after);
+    }
     return text + '\n/* Keep the frozen 880-unit plot readable on narrow screens. */\n' +
       '#chart{overflow:auto}#chart svg{min-width:880px}' +
-      '#chart:focus-visible{outline:3px solid #7aa5ff;outline-offset:4px}\n';
+      '#chart:focus-visible{outline:3px solid #4478e4;outline-offset:4px}\n';
   }
   if (file !== 'debt.js') return text;
   text = replaceOnce(
