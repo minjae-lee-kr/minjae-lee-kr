@@ -11,6 +11,8 @@ const mediaTypes = new Map([
   ['.svg', 'image/svg+xml'],
   ['.json', 'application/json; charset=utf-8'],
   ['.png', 'image/png'],
+  ['.woff2', 'font/woff2'],
+  ['.txt', 'text/plain; charset=utf-8'],
 ]);
 const commonHeaders = {
   'Cache-Control': 'no-store',

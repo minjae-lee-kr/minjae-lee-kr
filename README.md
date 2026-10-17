@@ -1,37 +1,39 @@
-<p align="left"><img src="assets/header.svg" alt="Minjae Lee — Ambitious products. Dependable decisions." width="100%"></p>
-
 [English](README.md) · [한국어](README.ko.md)
 
-I’m Minjae, a software engineer at NAVER working across commerce experiences, GraphQL API servers and developer productivity. I want ambitious ideas to become products people can depend on.
+# It works. I have questions.
 
-[Portfolio · 한국어 / English](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/) · [Engineering note](https://www.linkedin.com/pulse/when-findings-isnt-enough-coverage-heartbeats-lee-minjae-vre0c/)
+I’m Minjae, a software engineer at NAVER working across commerce interfaces, GraphQL API servers and developer automation.
 
-### Selected engineering experiments
+[**Explore the portfolio · 한국어 / English →**](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/)
 
-These are independent implementations with synthetic data. The questions are practical; the limits are explicit.
+### 01 / Intent · Recovery
 
-| Work                  | The question                                                                   | Evidence                                                                                                                                                                                     |
-| --------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Intent / Recovery** | After a response disappears, how do we recover the same durable intent?        | Real HTTP response loss, SQLite and process crashes. [Recorded local run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/).                               |
-| **Verified Change**   | Did we select the code—and the verification policy—that was actually reviewed? | Immutable Git candidates, real checker processes and conditional ref updates. [Recorded local run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/).      |
-| **Cancellation Debt** | When the gateway stops waiting, what work still occupies capacity?             | Four policies compare request cancellation, permits and physical completion. [Recorded local run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/cancellation/). |
+**The reservation is saved. The screen missed the news.**
 
-Public source: [Intent / Recovery](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Verified Change](https://github.com/minjae-lee-kr/verified-change-lab) · [Cancellation Debt](https://github.com/minjae-lee-kr/federated-catalog-lab).
+Recover a reservation after its HTTP response disappears. Then ask where reusing the same key stops being enough: when the receiver’s deduplication record expires.
 
-The reports display saved local runs; they do not run the experiments. Each lab's README includes reproduction commands. This repository includes the [portfolio source](docs/), which you can preview with `npm start` at `http://127.0.0.1:4173`.
+[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/) · [Source](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/)
 
-A smaller public tool: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards) distinguishes “nothing found” from “nothing checked.”
+### 02 / Verified Change
 
-Three reading guides connect the design decisions to their raw evidence: [When the key outlives the record](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/), [Verify what “passed” means](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/) and [The permit returned. The work remained](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/cancellation-debt/). Each includes Korean and English views and annotated figures.
+**Did the check pass—or did its definition change?**
 
-Intent also includes an [observed-history explorer](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/history/): the same final ledger can accompany incompatible reads. It separates actual HTTP observations from one deliberately altered response and one possible sequential explanation.
+Compare the same code under two checking policies, then bind approval to the exact candidate and policy. A passing result should survive a closer look at what ran.
 
-### How I work
+[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/) · [Source](https://github.com/minjae-lee-kr/verified-change-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/)
 
-- Connect the user’s intent to client state, API contracts and a durable result.
-- Reproduce a plausible failure before claiming the protected path works.
-- Keep the source revision, evidence and boundaries close to the claim.
+### 03 / Cancellation Debt
 
-React · TypeScript · GraphQL · Apollo Federation · Node.js · developer automation
+**The request left. The work stayed late.**
 
-All examples are original personal work. They do not reproduce employer code, internal architecture, private data or production results.
+Track the work that remains after a GraphQL gateway stops waiting. Four cancellation policies expose the gap between returning a permit and freeing the capacity it represents.
+
+[Read the note](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/cancellation-debt/) · [Source](https://github.com/minjae-lee-kr/federated-catalog-lab) · [Recorded run](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/cancellation/)
+
+Also: [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards), a tool for telling “nothing found” from “nothing checked.”
+
+### Reproduce & inspect
+
+Each lab’s README includes reproduction commands. The linked reports show saved local runs; they do not execute the experiments. Preview this [portfolio’s source](docs/) with `npm start` at `http://127.0.0.1:4173`.
+
+These are independent personal experiments with synthetic data. They do not reproduce employer code, internal architecture, private data or production results.

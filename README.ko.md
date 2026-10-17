@@ -1,37 +1,39 @@
-<p align="left"><img src="assets/header.ko.svg" alt="이민재 — 더 큰 가능성을, 믿고 쓸 수 있도록." width="100%"></p>
-
 [English](README.md) · [한국어](README.ko.md)
 
-네이버에서 커머스 경험, GraphQL API 서버, 개발 생산성을 다루는 소프트웨어 엔지니어 민재입니다. 큰 아이디어를 사람들이 믿고 쓰는 제품으로 만드는 데 관심이 있습니다.
+# 잘됩니다. 질문이 좀 있습니다.
 
-[포트폴리오 · 한국어 / English](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/) · [엔지니어링 글](https://www.linkedin.com/pulse/when-findings-isnt-enough-coverage-heartbeats-lee-minjae-vre0c/)
+네이버에서 커머스 인터페이스, GraphQL API 서버, 개발 자동화를 다루는 소프트웨어 엔지니어 민재입니다.
 
-### 대표 엔지니어링 실험
+[**포트폴리오 둘러보기 · 한국어 / English →**](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/) · [LinkedIn](https://www.linkedin.com/in/minjae-lee-kr/)
 
-가상 데이터를 사용하는 독립적인 구현입니다. 실제로 마주할 수 있는 질문을 다루고, 증명할 수 있는 범위를 함께 밝힙니다.
+### 01 / Intent · Recovery
 
-| 작업                  | 핵심 질문                                                            | 근거                                                                                                                                                                   |
-| --------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Intent / Recovery** | 응답이 사라진 뒤에도 같은 사용자의 의도로 결과를 복구할 수 있을까?   | 실제 HTTP 응답 유실, SQLite, 프로세스 종료. [기록된 로컬 실행](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/).                    |
-| **Verified Change**   | 검토한 코드와 검사 정책이 실제 반영 대상에도 그대로 적용됐을까?      | 불변 Git 후보, 실제 검사 프로세스, 조건부 ref 변경. [기록된 로컬 실행](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/).            |
-| **Cancellation Debt** | 게이트웨이가 대기를 멈춘 뒤 어떤 작업이 여전히 처리 용량을 차지할까? | 요청 취소, 허가, 실제 작업 완료를 비교하는 네 가지 정책. [기록된 로컬 실행](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/cancellation/). |
+**예약은 됐는데, 화면만 모릅니다.**
 
-공개 소스: [Intent / Recovery](https://github.com/minjae-lee-kr/intent-recovery-lab) · [Verified Change](https://github.com/minjae-lee-kr/verified-change-lab) · [Cancellation Debt](https://github.com/minjae-lee-kr/federated-catalog-lab).
+HTTP 응답이 사라진 예약을 복구합니다. 이어서 상대의 중복 방지 기록이 만료된 뒤에도 같은 키만으로 충분한지 확인합니다.
 
-보고서는 저장된 로컬 실행을 보여 주며, 실험을 실시간으로 실행하지 않습니다. 각 실험의 재현 방법은 해당 저장소 README에 있습니다. [포트폴리오 소스](docs/)는 `npm start` 후 `http://127.0.0.1:4173`에서 미리 볼 수 있습니다.
+[해설 읽기](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/) · [소스](https://github.com/minjae-lee-kr/intent-recovery-lab) · [실행 기록](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/intent/)
 
-공개된 작은 도구인 [**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)는 “발견한 문제가 없음”과 “검사한 것이 없음”을 구분합니다.
+### 02 / Verified Change
 
-[키보다 먼저 사라지는 기록](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/retention-boundary/), [‘통과’의 의미까지 검증하기](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/), [허가는 반환됐지만, 작업은 남아 있었다](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/cancellation-debt/)에서는 설계 판단과 원본 근거를 함께 읽을 수 있습니다. 세 글 모두 한·영 전환과 그림을 제공합니다.
+**통과한 걸까요, 통과 기준이 바뀐 걸까요?**
 
-Intent의 [관측 기록 탐색기](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/history/)에서는 같은 최종 장부에 서로 양립할 수 없는 조회 응답이 연결될 수 있음을 보여줍니다. 실제 HTTP 관측, 의도적으로 바꾼 응답 한 건, 가능한 순차 실행의 설명을 구분합니다.
+같은 코드를 두 검사 정책으로 비교하고, 승인을 검사한 후보와 정책에 연결합니다. 무엇을 실행했는지 들여다봐도 설명할 수 있는 ‘통과’를 다룹니다.
 
-### 일하는 방식
+[해설 읽기](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/verified-change/) · [소스](https://github.com/minjae-lee-kr/verified-change-lab) · [실행 기록](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/change/)
 
-- 사용자의 의도와 클라이언트 상태, API 계약, 저장된 결과를 하나의 흐름으로 봅니다.
-- 그럴듯하지만 실패하는 접근을 재현한 뒤, 같은 상황에서 보호된 경로를 비교합니다.
-- 소스 버전과 검증 근거, 확인할 수 없는 범위를 주장 가까이에 둡니다.
+### 03 / Cancellation Debt
 
-React · TypeScript · GraphQL · Apollo Federation · Node.js · 개발 자동화
+**요청은 퇴근했는데, 작업은 아직입니다.**
 
-모든 예제는 독립적인 개인 작업입니다. 회사 코드, 내부 설계, 비공개 데이터 또는 실서비스 성과를 재현하지 않습니다.
+GraphQL 게이트웨이가 대기를 끝낸 뒤에도 남는 작업을 추적합니다. 네 가지 취소 정책으로 실행 허가의 반환과 실제 처리 용량의 회복 사이를 비교합니다.
+
+[해설 읽기](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/notes/cancellation-debt/) · [소스](https://github.com/minjae-lee-kr/federated-catalog-lab) · [실행 기록](https://minjae-lee-engineering-labs.crisp-cream-0381.chatgpt.site/evidence/cancellation/)
+
+[**Empty Check Guards**](https://github.com/minjae-lee-kr/empty-check-guards)도 만들었습니다. “발견한 문제가 없음”과 “검사한 것이 없음”을 구분하는 도구입니다.
+
+### 직접 재현하고 살펴보기
+
+각 실험의 재현 방법은 해당 저장소 README에 있습니다. 연결된 보고서는 저장된 로컬 실행을 보여 주며, 실험을 실시간으로 실행하지 않습니다. [포트폴리오 소스](docs/)는 `npm start` 후 `http://127.0.0.1:4173`에서 미리 볼 수 있습니다.
+
+모두 가상 데이터를 사용하는 독립적인 개인 실험입니다. 회사 코드, 내부 설계, 비공개 데이터 또는 실서비스 성과를 재현하지 않습니다.

@@ -1,211 +1,184 @@
+import { mountWorkbench } from "./workbench.js";
+
 const copy = {
   en: {
-    title: 'Minjae Lee — Engineering Labs',
+    title: "Minjae Lee — It works. I have questions.",
     description:
-      'Independent engineering experiments in commerce recovery, evidence-bound changes and GraphQL cancellation.',
-    skip: 'Skip to selected work',
-    home: 'Minjae Lee portfolio home',
-    mainNav: 'Main navigation',
-    language: 'Language',
-    navWork: 'Selected work',
-    navApproach: 'Approach',
-    heroFirst: 'Ambitious products.',
-    heroSecond: 'Dependable decisions.',
+      "Interactive engineering notes on commerce recovery, automation approval and GraphQL cancellation. Independent experiments by Minjae Lee.",
+    skip: "Skip to selected work",
+    home: "Minjae Lee portfolio home",
+    role: "Software engineer at NAVER",
+    mainNav: "Main navigation",
+    language: "Language",
+    navWork: "Field notes",
+    navApproach: "The human",
+    eyebrow: "SOFTWARE, WITH A SECOND LOOK.",
+    heroFirst: "It works.",
+    heroSecond: "I have questions.",
+    starLabel: "Explore the questions",
     heroLead:
-      'Commerce experiences, GraphQL APIs and developer automation. Independent experiments that make difficult failure modes inspectable.',
-    explore: 'Explore the work',
-    domainProduct: '01 / Product',
-    domainContracts: '02 / Contracts',
-    domainEvidence: '03 / Evidence',
-    workEyebrow: 'SELECTED WORK',
-    workTitle: 'Start with the difficult case.',
-    workLead: 'Real local I/O. Reproducible counterexamples. The limits are part of the result.',
-    publication:
-      'Explore the public source or inspect a recorded local run. Reports are read-only evidence, with their original source revisions preserved.',
-    smallTool: 'A SMALL PUBLIC TOOL',
+      "Hi, I’m Minjae. I build interfaces people can rely on, and think through what happens after the click.",
+    specialties:
+      "7+ years in booking, ordering & payments. Now building AI-assisted developer tools.",
+    explore: "Let’s poke at it",
+    playTitle: "A little curiosity goes a long way.",
+    playAside: "Please touch the exhibits.",
+    workEyebrow: "THE LONGER VERSION",
+    workTitle: "Good questions deserve working code.",
+    workLead:
+      "Three independent labs. The decisions, the counterexamples, and the receipts.",
+    smallTool: "ALSO IN THE TOOLBOX",
     guardsDescription:
-      'Distinguish “nothing found” from “nothing checked.” A compact companion to the larger experiments.',
-    guardsLink: 'View the public code',
-    approachEyebrow: 'A WAY OF WORKING',
-    approachTitle: 'Make the ambition tangible.',
-    bio: 'I’m a software engineer at NAVER. My work spans commerce experiences, GraphQL API servers and developer productivity.',
-    principleOne: 'Follow the whole journey.',
-    principleOneBody:
-      'Connect what a person intends to do with the client state, API contract and durable result.',
-    principleTwo: 'Test the uncomfortable assumption.',
-    principleTwoBody:
-      'Reproduce the plausible approach that fails, then compare the protected path under the same fault.',
-    principleThree: 'Keep the claim inspectable.',
-    principleThreeBody:
-      'Show the recorded evidence, the source revision and what the experiment cannot prove.',
+      "“Nothing found” is doing a lot of work when nothing was checked.",
+    guardsLink: "Open the toolbox",
+    approachEyebrow: "THE PERSON BEHIND THE QUESTIONS",
+    approachTitle: "Serious about the work. Still curious about everything.",
+    bio: "I’m a software engineer at NAVER, with 7+ years across booking, ordering, payments and merchant tools. I work with React, TypeScript and GraphQL API servers built with Apollo Federation.",
+    bioTwo:
+      "Lately, I’ve been building AI-assisted tools and QA/release automation. I’m interested in how a small team can attempt bigger things without losing its grip on the details.",
+    contact: "Continue the conversation",
+    article: "More on verification →",
+    footer: "Made with care. And a few more questions.",
     disclosure:
-      'Independent personal projects using synthetic data. No employer code, internal architecture or production results are reproduced.',
-    article: 'Read the engineering note',
-    footer: 'Built to be explored, questioned and improved.',
-    report: 'Read the recorded run',
-    source: 'Explore the source',
-    caseNote: 'Read the engineering note',
-    historyNote: 'Explore the observed history',
-    recorded: 'Recorded local run',
-    pendingReport: 'Recorded report being prepared',
-    revision: 'Recorded run source',
+      "Independent personal experiments with synthetic data. No employer code, internal architecture or production results.",
+    source: "Source",
+    report: "Recorded run",
+    historyNote: "Observed history",
+    evidence: "Show the receipts",
+    revision: "Recording source",
     projects: {
       intent: {
-        category: 'Commerce systems',
-        status: 'Recorded execution',
-        question: 'The response disappeared. The reservation didn’t.',
+        category: "COMMERCE / RECOVERY",
+        question: "The reservation is saved. The screen missed the news.",
         description:
-          'Recover the same request after a lost response or process crash. Then examine why a stable retry key stops protecting the result when another system forgets it.',
-        labels: ['Intent', 'Committed', 'No response'],
-        visualLabel: 'INTENT / RESULT / RECOVERY',
-        visualNote: 'Recover by identity, not by guessing the outcome.',
-        tags: ['HTTP + SQLite', 'Process crashes', 'Durable intent'],
+          "A lost HTTP response leaves the screen uncertain. Follow the same intent across recovery, then see what changes when another system forgets the retry key.",
+        cta: "Follow the missing response",
+        tags: ["React + TypeScript", "HTTP + SQLite", "Crash recovery"],
       },
       change: {
-        category: 'Developer automation',
-        status: 'Real Git experiment',
-        question: 'A check passed. Did we select the code it checked?',
+        category: "AI / DEVELOPER AUTOMATION",
+        question: "The patch passed. It also changed the rules.",
         description:
-          'Bind approval to the exact Git candidate and verification policy. A compiler experiment exposes how a candidate can keep a check green by changing what it checks.',
-        labels: ['Candidate', 'Evidence', 'Git ref'],
-        visualLabel: 'ARTIFACT / POLICY / APPROVAL',
-        visualNote: 'Bind the artifact and the meaning of its evidence.',
-        tags: ['Git CAS', 'Checker processes', 'Policy boundaries'],
+          "A scripted candidate makes its compiler check green by changing the check. Compare that result with a fixed policy, then bind approval to the exact Git candidate.",
+        cta: "Look behind the green check",
+        tags: ["Git CAS", "Verification policy", "Approval boundaries"],
       },
       cancellation: {
-        category: 'GraphQL experiment',
-        status: 'Four policies compared',
-        question: 'The permit was returned. The work was still running.',
+        category: "GRAPHQL / EXECUTION",
+        question: "The request left. The work stayed late.",
         description:
-          'Track work after the gateway stops waiting. Four cancellation policies reveal the gap between available permits and unfinished work—and the cost of keeping that gap closed.',
-        labels: ['Client leaves', 'Gateway stops waiting', 'Work remains?'],
-        visualLabel: 'CANCELLATION / CAPACITY / COMPLETION',
-        visualNote: 'Track physical work beyond the caller’s wait.',
-        tags: ['Apollo Federation', 'AbortSignal', 'Admission control'],
+          "The gateway stops waiting. Four policies reveal what happens to the work—and the capacity it still occupies.",
+        cta: "Follow the unfinished work",
+        tags: ["Apollo Federation", "AbortSignal", "Admission control"],
       },
     },
   },
   ko: {
-    title: 'Minjae Lee — 엔지니어링 실험',
+    title: "Minjae Lee — 잘됩니다. 질문이 좀 있습니다.",
     description:
-      '커머스 복구, 검증 근거에 연결한 변경, GraphQL 취소를 다루는 독립 엔지니어링 실험입니다.',
-    skip: '대표 작업으로 이동',
-    home: 'Minjae Lee 포트폴리오 홈',
-    mainNav: '주요 메뉴',
-    language: '언어 선택',
-    navWork: '대표 작업',
-    navApproach: '일하는 방식',
-    heroFirst: '더 큰 가능성을,',
-    heroSecond: '믿고 쓸 수 있도록.',
+      "커머스 복구, 자동화 승인, GraphQL 취소. 직접 만져보며 읽는 민재의 독립 엔지니어링 실험 노트.",
+    skip: "대표 작업으로 이동",
+    home: "Minjae Lee 포트폴리오 홈",
+    role: "네이버 소프트웨어 엔지니어",
+    mainNav: "주요 메뉴",
+    language: "언어 선택",
+    navWork: "실험 노트",
+    navApproach: "만드는 사람",
+    eyebrow: "한 번 더 들여다보는 소프트웨어.",
+    heroFirst: "잘됩니다.",
+    heroSecond: "질문이 좀 있습니다.",
+    starLabel: "어떤 질문인지 살펴보기",
     heroLead:
-      '커머스 경험, GraphQL API, 개발 자동화. 복잡한 실패 상황을 직접 실행하고 설명하는 독립적인 개인 실험입니다.',
-    explore: '작업 살펴보기',
-    domainProduct: '01 / 제품 경험',
-    domainContracts: '02 / API 계약',
-    domainEvidence: '03 / 검증 근거',
-    workEyebrow: '대표 작업',
-    workTitle: '어려운 상황에서 시작합니다.',
-    workLead: '실제 로컬 I/O와 재현 가능한 반례. 증명할 수 있는 범위까지 함께 보여줍니다.',
-    publication:
-      '공개 소스와 실제 실행 기록을 함께 볼 수 있습니다. 보고서는 기록 당시 소스 버전을 보존한 읽기 전용 근거입니다.',
-    smallTool: '공개된 작은 도구',
+      "안녕하세요, 민재입니다. 사람들이 믿고 누를 수 있는 화면을 만들고, 그다음에 일어나는 일까지 설계합니다.",
+    specialties: "예약·주문·결제 7년+ · AI·개발 자동화로 확장 중",
+    explore: "한번 건드려 볼까요",
+    playTitle: "궁금한 건, 눌러봐야죠.",
+    playAside: "전시물을 만져 주세요.",
+    workEyebrow: "조금 더 깊이 들어가면",
+    workTitle: "좋은 질문은 코드로 이어집니다.",
+    workLead:
+      "세 가지 독립 실험. 선택한 설계와 반례, 직접 확인할 수 있는 근거까지.",
+    smallTool: "도구함에는 이런 것도",
     guardsDescription:
-      '“발견한 문제가 없음”과 “검사한 것이 없음”을 구분합니다. 더 큰 실험의 출발점이 된 작은 도구입니다.',
-    guardsLink: '공개 코드 보기',
-    approachEyebrow: '일하는 방식',
-    approachTitle: '큰 목표를 구체적인 결과로.',
-    bio: '네이버에서 커머스 경험, GraphQL API 서버, 개발 생산성을 다루는 소프트웨어 엔지니어입니다.',
-    principleOne: '사용자의 의도부터 결과까지.',
-    principleOneBody:
-      '사람이 하려는 일과 클라이언트 상태, API 계약, 저장된 결과를 하나의 흐름으로 봅니다.',
-    principleTwo: '당연하게 여긴 가정을 시험합니다.',
-    principleTwoBody:
-      '그럴듯하지만 실패하는 접근을 먼저 재현하고, 같은 상황에서 보호된 경로와 비교합니다.',
-    principleThree: '주장을 직접 확인할 수 있도록.',
-    principleThreeBody:
-      '실행 근거와 소스 버전, 그리고 이 실험으로 증명할 수 없는 범위를 함께 남깁니다.',
+      "아무것도 검사하지 않았는데, “문제없음”이라면 곤란하니까요.",
+    guardsLink: "도구함 열어보기",
+    approachEyebrow: "질문 뒤에 있는 사람",
+    approachTitle: "일에는 진지하게. 호기심은 잃지 않게.",
+    bio: "네이버에서 7년 이상 예약·주문·결제와 사업자 도구를 개발해 왔습니다. React·TypeScript 프론트엔드와 Apollo Federation 기반 GraphQL API 서버를 다룹니다.",
+    bioTwo:
+      "최근에는 AI 개발 도구와 QA·릴리스 자동화를 만들고 있습니다. 작은 팀도 더 큰 일을 시도할 수 있게 하면서, 중요한 디테일을 놓치지 않는 방법에 관심이 많습니다.",
+    contact: "이야기 이어가기",
+    article: "검증에 관한 글 더 읽기 →",
+    footer: "꼼꼼하게 만들었습니다. 질문은 조금 남겨두었고요.",
     disclosure:
-      '가상 데이터를 사용하는 독립적인 개인 프로젝트입니다. 회사 코드, 내부 설계 또는 실서비스 성과를 재현하지 않습니다.',
-    article: '엔지니어링 글 읽기',
-    footer: '살펴보고, 질문하고, 더 나아질 수 있도록.',
-    report: '실행 기록 읽어보기',
-    source: '소스 코드 살펴보기',
-    caseNote: '설계 판단 읽어보기',
-    historyNote: '관측 기록 살펴보기',
-    recorded: '기록된 로컬 실행',
-    pendingReport: '실행 기록 보고서 준비 중',
-    revision: '기록 당시 소스 버전',
+      "가상 데이터를 쓰는 독립적인 개인 실험입니다. 회사 코드·내부 설계·실서비스 성과를 재현하지 않습니다.",
+    source: "소스 코드",
+    report: "실행 기록",
+    historyNote: "관측 기록 탐색",
+    evidence: "근거도 궁금하다면",
+    revision: "기록 당시 소스",
     projects: {
       intent: {
-        category: '커머스 시스템',
-        status: '실행 기록 제공',
-        question: '응답은 사라졌지만, 예약은 남았다.',
+        category: "커머스 / 복구",
+        question: "예약은 됐는데, 화면만 모릅니다.",
         description:
-          '응답 유실과 프로세스 종료 뒤에도 같은 요청의 결과를 복구합니다. 두 시스템으로 경계를 넓혀, 상대가 기록을 지우면 같은 재시도 키도 충분하지 않음을 확인합니다.',
-        labels: ['사용자의 의도', '커밋 완료', '응답 유실'],
-        visualLabel: '의도 / 결과 / 복구',
-        visualNote: '결과를 추측하지 않고, 같은 의도로 다시 확인합니다.',
-        tags: ['HTTP + SQLite', '프로세스 종료', '재시도 식별자'],
+          "HTTP 응답을 놓친 화면은 결과를 확신할 수 없습니다. 같은 의도로 복구하는 과정부터, 상대 시스템이 재시도 키를 잊은 뒤의 한계까지 살펴봅니다.",
+        cta: "사라진 응답 따라가기",
+        tags: ["React + TypeScript", "HTTP + SQLite", "프로세스 종료 후 복구"],
       },
       change: {
-        category: '개발 자동화',
-        status: '실제 Git 실험',
-        question: '검사는 통과했다. 반영할 코드는 같은가?',
+        category: "AI / 개발 자동화",
+        question: "패치는 통과했습니다. 검사 기준도 바꿨더군요.",
         description:
-          '승인을 정확한 Git 후보와 검사 정책에 연결합니다. 후보가 검사 설정을 바꿔 오류를 놓치게 하는 대조군으로, ‘통과’의 의미까지 보존해야 하는 이유를 보여줍니다.',
-        labels: ['변경 후보', '검증 근거', 'Git ref'],
-        visualLabel: '산출물 / 정책 / 승인',
-        visualNote: '산출물뿐 아니라, 검증 근거의 의미까지 연결합니다.',
-        tags: ['Git CAS', '검사 프로세스', '정책 경계'],
+          "검사 설정을 바꿔 초록 결과를 만드는 후보를 스크립트로 재현했습니다. 고정된 정책의 결과와 비교하고, 승인을 정확한 Git 후보에 연결합니다.",
+        cta: "초록 체크 뒤 들여다보기",
+        tags: ["Git CAS", "검사 정책", "자동화 승인 경계"],
       },
       cancellation: {
-        category: 'GraphQL 실행 실험',
-        status: '네 가지 정책 비교',
-        question: '실행 허가는 반환됐지만, 작업은 남았다.',
+        category: "GRAPHQL / 실행 제어",
+        question: "요청은 퇴근했는데, 작업은 아직입니다.",
         description:
-          '게이트웨이가 대기를 끝낸 뒤에도 남는 작업을 추적합니다. 네 가지 취소 정책으로 실행 허가와 미완료 작업 수의 차이, 그리고 그 차이를 막기 위해 감수해야 하는 비용을 비교합니다.',
-        labels: ['클라이언트 이탈', '게이트웨이 대기 종료', '실제 작업은?'],
-        visualLabel: '취소 / 처리 용량 / 완료',
-        visualNote: '호출자의 대기 이후에도 남은 작업을 추적합니다.',
-        tags: ['Apollo Federation', 'AbortSignal', '진입 제어'],
+          "게이트웨이가 대기를 끝낸 뒤에도 작업은 남을 수 있습니다. 네 가지 취소 정책으로, 그 작업과 아직 차지하고 있는 처리 용량을 비교합니다.",
+        cta: "남은 작업 따라가기",
+        tags: ["Apollo Federation", "AbortSignal", "진입 제어"],
       },
     },
   },
 };
 const projects = [
   {
-    id: 'intent',
-    title: 'Intent / Recovery',
-    source: 'https://github.com/minjae-lee-kr/intent-recovery-lab',
-    revision: 'e081192',
-    url: 'evidence/intent/',
-    note: 'notes/retention-boundary/',
-    history: 'evidence/history/',
+    id: "intent",
+    title: "Intent / Recovery",
+    source: "https://github.com/minjae-lee-kr/intent-recovery-lab",
+    revision: "e081192",
+    url: "evidence/intent/",
+    note: "notes/retention-boundary/",
+    history: "evidence/history/",
   },
   {
-    id: 'change',
-    title: 'Verified Change',
-    source: 'https://github.com/minjae-lee-kr/verified-change-lab',
-    revision: '5eb3fe8',
-    url: 'evidence/change/',
-    note: 'notes/verified-change/',
+    id: "change",
+    title: "Verified Change",
+    source: "https://github.com/minjae-lee-kr/verified-change-lab",
+    revision: "5eb3fe8",
+    url: "evidence/change/",
+    note: "notes/verified-change/",
   },
   {
-    id: 'cancellation',
-    title: 'Cancellation Debt',
-    source: 'https://github.com/minjae-lee-kr/federated-catalog-lab',
-    revision: 'ff47d27',
-    url: 'evidence/cancellation/',
-    note: 'notes/cancellation-debt/',
+    id: "cancellation",
+    title: "Cancellation Debt",
+    source: "https://github.com/minjae-lee-kr/federated-catalog-lab",
+    revision: "ff47d27",
+    url: "evidence/cancellation/",
+    note: "notes/cancellation-debt/",
   },
 ];
-const key = 'minjae.portfolio.language';
-let language = navigator.language.toLowerCase().startsWith('ko') ? 'ko' : 'en';
+const key = "minjae.portfolio.language";
+let language = navigator.language.toLowerCase().startsWith("ko") ? "ko" : "en";
 try {
   const saved = localStorage.getItem(key);
-  if (saved === 'ko' || saved === 'en') language = saved;
+  if (saved === "ko" || saved === "en") language = saved;
 } catch {
-  /* Browser preference remains available without storage. */
+  /* Browser preference also works without storage. */
 }
 const element = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -215,123 +188,133 @@ const element = (tag, className, text) => {
 };
 function renderProjects(t) {
   const focused = document.activeElement;
-  const focusedCard = focused?.matches('#projects article a')
-    ? focused.closest('article')
-    : null;
-  const focusedHref = focusedCard ? focused.getAttribute('href') : null;
-  document.querySelector('#projects').replaceChildren(
-    ...projects.map((project) => {
+  const cardId = focused?.closest("#projects article")?.id;
+  const focusedHref = cardId ? focused.getAttribute("href") : null;
+  const focusedSummary = cardId && focused.tagName === "SUMMARY";
+  const opened = new Set(
+    [...document.querySelectorAll("#projects details[open]")].map(
+      (node) => node.closest("article").id,
+    ),
+  );
+  document.querySelector("#projects").replaceChildren(
+    ...projects.map((project, index) => {
       const text = t.projects[project.id];
-      const card = element(
-        'article',
-        project.id === 'cancellation' ? 'project secondary' : 'project',
-      );
+      const card = element("article", "project");
       card.id = project.id;
-      const visual = element('div', 'project-visual');
-      visual.setAttribute('aria-hidden', 'true');
-      visual.append(element('span', 'visual-label', text.visualLabel));
-      const flow = element('div', 'flow');
-      text.labels.forEach((label, index) => {
-        const box = element('div', index === 1 ? 'flow-node emphasized' : 'flow-node', label);
-        flow.append(box);
-        if (index < 2) flow.append(element('span', 'flow-arrow', '→'));
-      });
-      visual.append(flow, element('p', 'diagram-note', text.visualNote));
-      const body = element('div', 'project-copy');
-      const meta = element('div', 'project-meta');
-      meta.append(element('span', '', text.category), element('span', 'status', text.status));
-      const heading = element('h3', '', project.title);
-      heading.id = project.id + '-title';
-      card.setAttribute('aria-labelledby', heading.id);
-      const tags = element('div', 'tags');
-      for (const tag of text.tags) tags.append(element('span', 'tag', tag));
-      const links = element('div', 'project-links');
-      if (project.note) {
-        const label = t[project.noteLabel ?? 'caseNote'];
-        const noteLink = element('a', '', label + ' →');
-        noteLink.href = project.note;
-        noteLink.setAttribute('aria-label', project.title + ' — ' + label);
-        links.append(noteLink);
-      }
-      const sourceLink = element('a', '', t.source + ' ↗');
-      sourceLink.href = project.source;
-      sourceLink.rel = 'noreferrer';
-      sourceLink.setAttribute('aria-label', project.title + ' — ' + t.source);
-      links.append(sourceLink);
-      const evidenceLinks = element('div', 'evidence-links');
-      if (project.url) {
-        const link = element('a', '', t.report + ' ↗');
-        link.href = project.url;
-        link.setAttribute('aria-label', project.title + ' — ' + t.report);
-        evidenceLinks.append(link);
-      } else evidenceLinks.append(element('span', 'pending', t.pendingReport));
+      const indexColumn = element("div", "project-index");
+      indexColumn.append(
+        element("span", "project-number", String(index + 1).padStart(2, "0")),
+        element("span", "project-name", project.title),
+      );
+      const body = element("div", "project-copy");
+      const heading = element("h3", "", text.question);
+      heading.id = project.id + "-title";
+      card.setAttribute("aria-labelledby", heading.id);
+      const tags = element("p", "project-tech", text.tags.join(" / "));
+      const links = element("div", "project-links");
+      const note = element("a", "text-link", text.cta);
+      note.href = project.note;
+      note.append(element("span", "link-arrow", "↗"));
+      note.setAttribute("aria-label", project.title + " — " + text.cta);
+      const source = element("a", "source-link", t.source + " ↗");
+      source.href = project.source;
+      source.rel = "noreferrer";
+      source.setAttribute("aria-label", project.title + " — " + t.source);
+      links.append(note, source);
+      const details = element("details", "evidence-details");
+      details.open = opened.has(project.id);
+      const summary = element("summary", "", t.evidence);
+      summary.setAttribute("aria-label", project.title + " — " + t.evidence);
+      const evidenceLinks = element("div", "evidence-links");
+      const report = element("a", "", t.report + " →");
+      report.href = project.url;
+      report.setAttribute("aria-label", project.title + " — " + t.report);
+      evidenceLinks.append(report);
       if (project.history) {
-        const historyLink = element('a', '', t.historyNote + ' →');
-        historyLink.href = project.history;
-        historyLink.setAttribute('aria-label', project.title + ' — ' + t.historyNote);
-        evidenceLinks.append(historyLink);
+        const history = element("a", "", t.historyNote + " →");
+        history.href = project.history;
+        evidenceLinks.append(history);
       }
-      const revision = element('p', 'source-revision', t.revision + ' ' + project.revision);
+      evidenceLinks.append(
+        element(
+          "span",
+          "source-revision",
+          t.revision + " · " + project.revision,
+        ),
+      );
+      details.append(summary, evidenceLinks);
       body.append(
-        meta,
+        element("p", "eyebrow", text.category),
         heading,
-        element('p', 'question', text.question),
-        element('p', 'description', text.description),
+        element("p", "description", text.description),
         tags,
         links,
-        evidenceLinks,
-        revision,
+        details,
       );
-      card.append(visual, body);
+      card.append(indexColumn, body);
       return card;
     }),
   );
-  if (focusedCard && focusedHref) {
-    const replacement = [...document.querySelectorAll('#projects article a')].find(
-      (link) =>
-        link.closest('article').id === focusedCard.id &&
-        link.getAttribute('href') === focusedHref,
-    );
+  if (cardId) {
+    const replacement = focusedSummary
+      ? document.querySelector("#" + cardId + " summary")
+      : [...document.querySelectorAll("#projects article a")].find(
+          (link) =>
+            link.closest("article").id === cardId &&
+            link.getAttribute("href") === focusedHref,
+        );
     replacement?.focus({ preventScroll: true });
   }
 }
+let workbench;
 function render() {
   const t = copy[language];
   document.documentElement.lang = language;
   document.title = t.title;
-  document.querySelector('meta[name=description]').content = t.description;
-  document.querySelectorAll('[data-i18n]').forEach((node) => {
+  document.querySelector("meta[name=description]").content = t.description;
+  document.querySelectorAll("[data-i18n]").forEach((node) => {
     node.textContent = t[node.dataset.i18n];
   });
-  document.querySelectorAll('[data-i18n-aria]').forEach((node) => {
-    node.setAttribute('aria-label', t[node.dataset.i18nAria]);
-  });
-  document.querySelectorAll('[data-language]').forEach((button) => {
-    button.setAttribute('aria-pressed', String(button.dataset.language === language));
-  });
+  document
+    .querySelectorAll("[data-i18n-aria]")
+    .forEach((node) =>
+      node.setAttribute("aria-label", t[node.dataset.i18nAria]),
+    );
+  document
+    .querySelectorAll("[data-language]")
+    .forEach((button) =>
+      button.setAttribute(
+        "aria-pressed",
+        String(button.dataset.language === language),
+      ),
+    );
   renderProjects(t);
+  workbench?.setLanguage(language);
 }
-document.querySelectorAll('[data-language]').forEach((button) =>
-  button.addEventListener('click', () => {
+document.querySelectorAll("[data-language]").forEach((button) =>
+  button.addEventListener("click", () => {
     language = button.dataset.language;
     try {
       localStorage.setItem(key, language);
     } catch {
-      /* Language switching works even when storage is blocked. */
+      /* Switching works without storage. */
     }
     render();
   }),
 );
 render();
-// A report can change the shared preference before browser Back restores this page.
-window.addEventListener('pageshow', () => {
+workbench = mountWorkbench(document.querySelector("#workbench"), { language });
+window.addEventListener("pageshow", () => {
   try {
     const saved = localStorage.getItem(key);
-    if ((saved === 'ko' || saved === 'en') && saved !== language) {
+    if ((saved === "ko" || saved === "en") && saved !== language) {
       language = saved;
       render();
     }
   } catch {
-    /* Keep the current view when browser storage is unavailable. */
+    /* Keep the current view. */
   }
+  // A history traversal may restore native input values after pageshow. Keep
+  // the slider, its accessible text and the illustration on the same state.
+  requestAnimationFrame(() => workbench.setLanguage(language));
 });

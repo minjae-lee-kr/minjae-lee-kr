@@ -41,15 +41,18 @@ test('preview serves public assets, HEAD metadata and clear method errors', asyn
   try {
     const page = await fetch(preview.url);
     assert.equal(page.status, 200);
-    assert.match(await page.text(), /Minjae Lee — Engineering Labs/);
+    assert.match(await page.text(), /Minjae Lee — It works\. I have questions\./);
     assert.equal(page.headers.get('x-content-type-options'), 'nosniff');
     assert.match(page.headers.get('content-security-policy'), /object-src 'none'/);
     const head = await fetch(preview.url, { method: 'HEAD' });
     assert.equal(head.status, 200);
     assert.equal(head.headers.get('content-length'), page.headers.get('content-length'));
     assert.equal(await head.text(), '');
-    for (const asset of ['styles.css', 'portfolio.js'])
+    for (const asset of ['styles.css', 'portfolio.js', 'workbench.js', 'workbench.css'])
       assert.equal((await fetch(`${preview.url}/${asset}`)).status, 200);
+    const font = await fetch(`${preview.url}/assets/fonts/SUIT-Variable.woff2`);
+    assert.equal(font.status, 200);
+    assert.equal(font.headers.get('content-type'), 'font/woff2');
     const post = await fetch(preview.url, { method: 'POST', body: 'not accepted' });
     assert.equal(post.status, 405);
     assert.equal(post.headers.get('allow'), 'GET, HEAD');
