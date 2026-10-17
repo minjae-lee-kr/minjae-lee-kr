@@ -4,6 +4,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateRecording } from './recording-contract.mjs';
+import { adaptCancellationDisplay } from './cancellation-display.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const parent = path.dirname(root);
@@ -171,8 +172,10 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
         );
       text += restorePreference('language', 'render');
     }
-    if (source.id === 'cancellation' && file === 'debt.js')
-      text += restorePreference('lang', 'translate');
+    if (source.id === 'cancellation') {
+      text = adaptCancellationDisplay(file, text);
+      if (file === 'debt.js') text += restorePreference('lang', 'translate');
+    }
     const output = Buffer.from(text);
     safeText(text, `bundled/${file}`);
     // Evidence JSON is transported byte-for-byte; only display assets are adapted.
@@ -211,6 +214,9 @@ for (const source of sources.filter((source) => selection === 'all' || source.id
       'Back/Forward preference restoration with report state preserved',
       'recorded-run banner',
       ...(source.id === 'change' ? ['saved-report load failure copy'] : []),
+      ...(source.id === 'cancellation'
+        ? ['readable timeline width with keyboard scrolling', 'Korean execution-slot terminology']
+        : []),
     ],
     files,
   };
